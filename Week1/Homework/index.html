@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js" lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<!-- 헤더 -->
+<header>
+  <!-- 아바타 -->
+  <!-- hover 시 그림자 효과 -->
+  <img src="" alt="장민수 프로필 사진" />
+
+  <!-- 이름/타이틀 -->
+  <div>
+    <h1>장민수 블로그</h1>
+    <p>안녕하세요</p>
+  </div>
+
+  <!-- 소셜 아이콘 -->
+  <!-- hover 시 위로 이동 and 색상 변경, 소셜 아이콘 클릭 시 해당 링크로 연결 -->
+  <div>
+    <a href="#" aria-label="소셜 링크">
+      <img src="" alt="" />
+    </a>
+  </div>
+</header>
+
+<!-- 네비게이션 (사이드 목차)  -->
+<!-- 스크롤 시 고정, 항목 클릭 시 해당 섹션으로 스크롤되어 이동, hover 시 색상 변경 -->
+<!-- 맨 위/맨 아래 항목의 모서리 반경을 가운데 항목과 다르게 -->
+<nav aria-label="페이지 목차">
+  <a href="#photo-dump">포토덤프</a>
+  <a href="#album">좋아하는 것</a>
+  <a href="#interests">내 관심사</a>
+  <a href="#to-webotni">To. 웹왔니</a>
+</nav>
+<main>
+  <!-- 포토 덤프 -->
+  <!-- 위 - 1 : 1 : 2(가로 2칸) -->
+  <!-- 아래 - 3(가로 3칸, 세로 2칸 차지) : 1(위 아래 1 : 1, 2개) -->
+  <!-- grid layout -->
+  <!-- 이미지 hover 시 사진 확대(정해진 영역 안에서 사진이 커지는 방식) -->
+  <section id="photo-dump" aria-labelledby="photo-dump-title">
+    <h2 id="photo-dump-title">포토덤프</h2>
+  </section>
+
+  <!-- 사진첩 (가로 스크롤 뷰) -->
+  <!-- 가로 방향 스크롤, 스크롤바가 보이지 않도록 구현, 모든 사진은 찌그러지지 않기 -->
+  <!-- 끊김 없는 무한 루프 배너 -->
+  <section id="album" aria-labelledby="album-title">
+    <h2 id="album-title">좋아하는 것</h2>
+  </section>
+
+  <!-- 관심사 -->
+  <!-- 카드 7개 이상, 이미지/제목/버튼 2개 형식 -->
+  <!-- 반응형 구현 (화면 크기에 따라 5 -> 4 -> 3 -> 2열로 변화) -->
+  <!-- 카드 썸네일 크기 통일, 이미지가 찌그러지지 않아야 함 -->
+  <!-- 카드 hover 시 상승/그림자 애니메이션 -->
+  <!-- 좋아요/싫어요 hover 시 자연스러운 컬러 변경 -->
+  <section id="interests" aria-labelledby="interests-title">
+    <h2 id="interests-title">내 관심사</h2>
+  </section>
+
+  <!-- To. 웹왔니 -->
+  <!-- 텍스트 앞 뒤 아이콘은 가상 요소로 추가 (하드 코딩 x) -->
+  <section id="to-webotni" aria-labelledby="to-webotni-title">
+    <h2 id="to-webotni-title">To. 웹왔니</h2>
+  </section>
+</main>
+
+<!-- 페이지 하단에 위치 (아래 여백 없어야 함) -->
+<footer></footer>
+</body>
+
+</html>
