@@ -26,7 +26,8 @@ main {
   flex-direction: column;
   gap: 96px;
   padding: 40px 40px 0 32px;
-  max-width: min(var(--content-max-width), calc(100vw - var(--sidebar-width) - 40px));
+  width: 100%;
+  max-width: none;
 }
 
 main section {
