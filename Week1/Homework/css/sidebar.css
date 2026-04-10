@@ -82,3 +82,9 @@
 .sidebar-list a {
   display: block;
 }
+
+.sidebar-list a:focus-visible {
+  outline: 3px solid #46b9d1;
+  outline-offset: 4px;
+  border-radius: 8px;
+}

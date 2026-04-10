@@ -119,6 +119,12 @@
   filter: brightness(0.96);
 }
 
+.interest-card-button:focus-visible {
+  outline: 3px solid #46b9d1;
+  outline-offset: 3px;
+  filter: brightness(0.96);
+}
+
 .interest-card-button.like {
   background: #91caff;
 }

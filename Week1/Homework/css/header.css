@@ -45,6 +45,11 @@
   box-shadow: 0 10px 24px rgba(17, 17, 17, 0.22);
 }
 
+.header-image-wrapper img:focus-visible {
+  outline: 3px solid #46b9d1;
+  outline-offset: 4px;
+}
+
 .header-sns {
   flex: 1;
   display: flex;
@@ -60,6 +65,14 @@
 
 .header-sns a:hover {
   transform: translateY(-4px);
+  filter: brightness(0) saturate(100%) invert(54%) sepia(78%) saturate(574%) hue-rotate(158deg) brightness(95%) contrast(93%);
+}
+
+.header-sns a:focus-visible {
+  transform: translateY(-4px);
+  outline: 3px solid #46b9d1;
+  outline-offset: 4px;
+  border-radius: 999px;
   filter: brightness(0) saturate(100%) invert(54%) sepia(78%) saturate(574%) hue-rotate(158deg) brightness(95%) contrast(93%);
 }
 
