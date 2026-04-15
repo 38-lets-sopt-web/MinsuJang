@@ -1,0 +1,105 @@
+@layer theme {
+  :root {
+    color-scheme: light;
+
+    --color-bg-page: #f5f5f7;
+    --color-bg-page-dark: #000000;
+    --color-surface: #ffffff;
+    --color-surface-muted: #fafafc;
+    --color-surface-dark-1: #272729;
+    --color-surface-dark-2: #262628;
+    --color-surface-dark-3: #28282a;
+    --color-surface-dark-4: #2a2a2d;
+    --color-surface-dark-5: #242426;
+    --color-text: #1d1d1f;
+    --color-text-strong: #000000;
+    --color-text-muted: rgba(0, 0, 0, 0.8);
+    --color-text-subtle: rgba(0, 0, 0, 0.48);
+    --color-text-inverse: #ffffff;
+    --color-border-soft: rgba(29, 29, 31, 0.08);
+    --color-border-strong: rgba(29, 29, 31, 0.16);
+    --color-accent: #0071e3;
+    --color-link: #0066cc;
+    --color-link-dark: #2997ff;
+    --color-focus: #0071e3;
+    --color-overlay: rgba(210, 210, 215, 0.64);
+    --color-button-active: #ededf2;
+    --shadow-card: 3px 5px 30px rgba(0, 0, 0, 0.22);
+    --shadow-nav: 0 0 0 1px rgba(255, 255, 255, 0.04);
+
+    --font-display: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    --text-hero-size: 5.6rem;
+    --text-hero-line: 1.07;
+    --text-hero-track: -0.028rem;
+    --text-h2-size: 4rem;
+    --text-h2-line: 1.1;
+    --text-h3-size: 2.8rem;
+    --text-h3-line: 1.14;
+    --text-title-size: 2.1rem;
+    --text-title-line: 1.19;
+    --text-body-size: 1.7rem;
+    --text-body-line: 1.47;
+    --text-body-track: -0.0374rem;
+    --text-caption-size: 1.4rem;
+    --text-caption-line: 1.29;
+    --text-caption-track: -0.0224rem;
+    --text-micro-size: 1.2rem;
+    --text-micro-line: 1.33;
+    --text-micro-track: -0.012rem;
+
+    --radius-card: 0.8rem;
+    --radius-panel: 1.2rem;
+    --radius-field: 1.1rem;
+    --radius-pill: 98rem;
+    --radius-round: 9999px;
+
+    --space-2: 0.2rem;
+    --space-4: 0.4rem;
+    --space-5: 0.5rem;
+    --space-6: 0.6rem;
+    --space-7: 0.7rem;
+    --space-8: 0.8rem;
+    --space-9: 0.9rem;
+    --space-10: 1rem;
+    --space-11: 1.1rem;
+    --space-12: 1.2rem;
+    --space-14: 1.4rem;
+    --space-15: 1.5rem;
+    --space-16: 1.6rem;
+    --space-17: 1.7rem;
+    --space-20: 2rem;
+    --space-24: 2.4rem;
+    --space-32: 3.2rem;
+    --space-40: 4rem;
+    --space-48: 4.8rem;
+    --space-64: 6.4rem;
+    --space-80: 8rem;
+    --space-96: 9.6rem;
+
+    --container-width: 98rem;
+    --nav-height: 4.8rem;
+    --transition-fast: 180ms ease;
+    --transition-base: 240ms ease;
+  }
+
+  @media (max-width: 1024px) {
+    :root {
+      --text-hero-size: 4.8rem;
+      --text-h2-size: 3.6rem;
+      --container-width: min(98rem, calc(100vw - 4.8rem));
+    }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --text-hero-size: 2.8rem;
+      --text-h2-size: 2.8rem;
+      --text-h3-size: 2.4rem;
+      --text-title-size: 1.9rem;
+      --text-body-size: 1.6rem;
+      --container-width: calc(100vw - 3.2rem);
+    }
+  }
+}
