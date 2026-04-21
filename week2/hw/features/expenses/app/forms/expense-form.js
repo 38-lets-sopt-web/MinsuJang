@@ -1,7 +1,7 @@
 import { addExpense } from "../../api/index.js";
 import { elements } from "../../dom/elements/index.js";
 import { closeModal } from "../../ui/controls/modal.js";
-import { render } from "../../ui/views/render.js";
+import { renderExpenses } from "../actions/index.js";
 
 /**
  * 지출 추가 폼에서 현재 입력값을 읽어 도메인 초안 객체로 변환한다.
@@ -79,7 +79,7 @@ export const submitAddExpenseForm = () => {
   addExpense(validation.payload);
   resetAddExpenseForm();
   closeModal(elements.modal.add);
-  render();
+  renderExpenses();
 
   return {
     ok: true,

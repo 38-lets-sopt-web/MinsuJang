@@ -1,5 +1,4 @@
 import { getExpenses } from "../../api/index.js";
-import { syncVisibleSelection, toggleExpenseSelection } from "../../app/actions/selection.js";
 import { getVisibleExpenses } from "../../core/selectors.js";
 import { state } from "../../core/state.js";
 import { renderDetailModal } from "./detail.js";
@@ -11,18 +10,21 @@ import { renderTable } from "./table.js";
  *
  * 테이블, 요약, 전체 선택 상태를 한 번에 동기화한다.
  *
+ * @param {object} [handlers] 렌더 과정에서 실행할 app 계층 콜백
+ * @param {(visibleExpenses: Array<object>) => void} [handlers.onBeforeRender] 렌더 전 상태 동기화 콜백
+ * @param {(expenseId: number|string, checked: boolean) => void} [handlers.onToggleExpenseSelection] 행 선택 변경 콜백
  * @returns {void}
  */
-export const render = () => {
+export const render = ({ onBeforeRender = () => {}, onToggleExpenseSelection = () => {} } = {}) => {
   const expenses = getExpenses();
   const visibleExpenses = getVisibleExpenses(expenses, state.filters, state.sortOrder);
 
-  syncVisibleSelection(visibleExpenses);
+  onBeforeRender(visibleExpenses);
 
   renderTable(visibleExpenses, {
     selectedIds: state.selectedIds,
     onToggleExpenseSelection(expenseId, checked) {
-      toggleExpenseSelection(expenseId, checked);
+      onToggleExpenseSelection(expenseId, checked);
       syncSelectAllCheckbox(visibleExpenses, state.selectedIds);
     },
     onOpenExpenseDetail(expense) {

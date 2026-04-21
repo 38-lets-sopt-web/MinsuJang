@@ -6,8 +6,26 @@ import { resetFilters, setSortOrder, updateFiltersFromForm } from "./filters.js"
 import {
   clearSelectedExpenses,
   getSelectedExpenseIds,
+  syncVisibleSelection,
+  toggleExpenseSelection,
   toggleVisibleSelection,
 } from "./selection.js";
+
+/**
+ * 지출 화면 렌더링에 필요한 app 계층 콜백을 주입한다.
+ *
+ * @returns {void}
+ */
+export const renderExpenses = () => {
+  render({
+    onBeforeRender(visibleExpenses) {
+      syncVisibleSelection(visibleExpenses);
+    },
+    onToggleExpenseSelection(expenseId, checked) {
+      toggleExpenseSelection(expenseId, checked);
+    },
+  });
+};
 
 /**
  * 현재 필터와 정렬 상태를 기준으로 화면에 보이는 지출 목록만 계산한다.
@@ -25,7 +43,7 @@ const getCurrentVisibleExpenses = () => {
  */
 export const applyFilters = () => {
   updateFiltersFromForm();
-  render();
+  renderExpenses();
 };
 
 /**
@@ -35,7 +53,7 @@ export const applyFilters = () => {
  */
 export const resetExpenseFilters = () => {
   resetFilters();
-  render();
+  renderExpenses();
 };
 
 /**
@@ -46,7 +64,7 @@ export const resetExpenseFilters = () => {
  */
 export const changeSortOrder = (sortOrder) => {
   setSortOrder(sortOrder);
-  render();
+  renderExpenses();
 };
 
 /**
@@ -59,7 +77,7 @@ export const toggleAllVisibleExpenses = (checked) => {
   const visibleExpenses = getCurrentVisibleExpenses();
 
   toggleVisibleSelection(visibleExpenses, checked);
-  render();
+  renderExpenses();
 };
 
 /**
@@ -80,5 +98,5 @@ export const deleteSelectedExpenses = () => {
   });
 
   clearSelectedExpenses();
-  render();
+  renderExpenses();
 };
