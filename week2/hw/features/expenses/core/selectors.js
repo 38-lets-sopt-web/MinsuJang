@@ -11,6 +11,7 @@ const matchesKeyword = (expense, keyword) => {
   }
 
   return [
+    String(expense.id),
     expense.title,
     String(expense.amount),
     expense.date,
