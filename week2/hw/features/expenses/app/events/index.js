@@ -85,7 +85,7 @@ const bindSelectionEvents = () => {
  * @returns {void}
  */
 const bindHeaderEvents = () => {
-  elements.header.scrollToTopButton.addEventListener("click", () => {
+  elements.header.reloadButton.addEventListener("click", () => {
     window.location.reload();
   });
 };
