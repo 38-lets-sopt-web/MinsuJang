@@ -1,0 +1,352 @@
+<!doctype html>
+<html class="no-js" lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>장민수 블로그 | 웹왔니 자기소개 페이지</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="장민수의 사진, 좋아하는 것, 관심사, 그리고 웹왔니에게 전하는 메시지를 담은 HTML/CSS 자기소개 페이지입니다.">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<!-- 헤더 -->
+<header id="header-container">
+  <!-- 아바타 -->
+  <!-- hover 시 그림자 효과 -->
+  <div class="header-image-wrapper">
+    <img src="assets/img/img-profile.webp" alt="장민수 프로필 사진" />
+  </div>
+
+  <!-- 이름/타이틀 -->
+  <div class="header-info">
+    <h1>장민수 블로그</h1>
+    <p>안녕하세요</p>
+  </div>
+
+  <!-- 소셜 아이콘 -->
+  <!-- hover 시 위로 이동 and 색상 변경, 소셜 아이콘 클릭 시 해당 링크로 연결 -->
+  <nav class="header-sns" aria-label="소셜 링크">
+    <a href="https://github.com/Tnalxmsk" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <img src="assets/icon/ic-logo-github.svg" alt="" />
+    </a>
+    <a href="https://velog.io/@tnalxmsk/posts" target="_blank" rel="noopener noreferrer" aria-label="Velog">
+      <img src="assets/icon/ic-logo-velog-.svg" alt="" />
+    </a>
+    <a href="https://www.instagram.com/tnalxmsk" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <img src="assets/icon/ic-logo-instagram.svg" alt="" />
+    </a>
+  </nav>
+</header>
+
+<div class="main-container">
+  <!-- 네비게이션 (사이드 목차)  -->
+  <!-- 스크롤 시 고정, 항목 클릭 시 해당 섹션으로 스크롤되어 이동, hover 시 색상 변경 -->
+  <!-- 맨 위/맨 아래 항목의 모서리 반경을 가운데 항목과 다르게 -->
+  <aside id="sidebar-container">
+    <nav aria-label="페이지 목차">
+      <ul class="sidebar-list">
+        <li><a href="#photo-dump">포토덤프</a></li>
+        <li><a href="#album">좋아하는 것</a></li>
+        <li><a href="#interests">내 관심사</a></li>
+        <li><a href="#to-webotni">To. 웹왔니</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <!-- 포토 덤프 -->
+    <!-- 위 - 1 : 1 : 2(가로 2칸) -->
+    <!-- 아래 - 3(가로 3칸, 세로 2칸 차지) : 1(위 아래 1 : 1, 2개) -->
+    <!-- grid layout -->
+    <!-- 이미지 hover 시 사진 확대(정해진 영역 안에서 사진이 커지는 방식) -->
+    <section id="photo-dump" class="photo-dump-section" aria-labelledby="photo-dump-title">
+      <div class="section-heading">
+        <h2 id="photo-dump-title">포토덤프</h2>
+        <p>대충 내 사진</p>
+      </div>
+      <div class="photo-dump-grid" aria-label="포토덤프 미리보기">
+        <article class="photo-card photo-card-a">
+          <img src="assets/img/img-photodump-1.webp" alt="수염 제모 시술 전에 마취를 받고 있는 모습의 사진" />
+        </article>
+        <article class="photo-card photo-card-b">
+          <img src="assets/img/img-photodump-2.webp" alt="제주도 아베베에서 찍은 사진" />
+        </article>
+        <article class="photo-card photo-card-c">
+          <img src="assets/img/img-photodump-3.webp" alt="스냅핑 멤버가 함께 찍은 단체 사진" />
+        </article>
+        <article class="photo-card photo-card-d">
+          <img src="assets/img/img-photodump-4.webp" alt="스냅핑 데모데이 현장에서 찍은 사진" />
+        </article>
+        <article class="photo-card photo-card-e">
+          <img src="assets/img/img-photodump-5.webp" alt="창업 학부제 특강에서 찍은 사진" />
+        </article>
+        <article class="photo-card photo-card-f">
+          <img src="assets/img/img-photodump-6.webp" alt="다른 사람이 찍어준 모습을 담은 사진" />
+        </article>
+      </div>
+    </section>
+
+    <!-- 사진첩 (가로 스크롤 뷰) -->
+    <!-- 가로 방향 스크롤, 스크롤바가 보이지 않도록 구현, 모든 사진은 찌그러지지 않기 -->
+    <!-- 끊김 없는 무한 루프 배너 -->
+    <section id="album" class="album-section" aria-labelledby="album-title">
+      <div class="section-heading">
+        <h2 id="album-title">좋아하는 것</h2>
+        <p>이것저것</p>
+      </div>
+      <div class="album-shell" aria-label="좋아하는 것 무한 배너">
+        <div class="album-track">
+          <article class="album-card" data-tone="mint">
+            <img src="assets/img/img-like-1.webp" alt="일본 라멘 한 그릇을 찍은 사진" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">📷</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">라멘</h3>
+                <p class="album-card-copy">멘야준 시오라멘</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card tall" data-tone="peach">
+            <img src="assets/img/img-like-2.webp" alt="평양냉면 한 그릇을 찍은 사진" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">🎧</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">평양냉면</h3>
+                <p class="album-card-copy">최애 여름 음식</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card" data-tone="sky">
+            <img src="assets/img/img-like-3.webp" alt="노티드 도넛을 가까이에서 찍은 사진" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">☕</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">노티드</h3>
+                <p class="album-card-copy">사랑함</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card tall" data-tone="lilac">
+            <img src="assets/img/img-like-4.webp" alt="고양이의 모습을 담은 사진" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">💻</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">고양이</h3>
+                <p class="album-card-copy">그냥 사랑함</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card" data-tone="lemon">
+            <img src="assets/img/img-like-5.webp" alt="위스키와 육포를 함께 찍은 사진" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">🧁</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">위스키</h3>
+                <p class="album-card-copy">최고</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card" data-tone="aqua">
+            <img src="assets/img/img-like-6.webp" alt="드림카로 생각하는 부가티 차량의 사진" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">🌊</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">부가티</h3>
+                <p class="album-card-copy">미래 드림카(ㅜ)</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="album-card" data-tone="mint" aria-hidden="true">
+            <img src="assets/img/img-like-1.webp" alt="" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">📷</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">라멘</h3>
+                <p class="album-card-copy">멘야준 시오라멘</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card tall" data-tone="peach" aria-hidden="true">
+            <img src="assets/img/img-like-2.webp" alt="" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">🎧</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">평양냉면</h3>
+                <p class="album-card-copy">최애 여름 음식</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card" data-tone="sky" aria-hidden="true">
+            <img src="assets/img/img-like-3.webp" alt="" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">☕</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">노티드</h3>
+                <p class="album-card-copy">사랑함</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card tall" data-tone="lilac" aria-hidden="true">
+            <img src="assets/img/img-like-4.webp" alt="" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">💻</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">고양이</h3>
+                <p class="album-card-copy">그냥 사랑함</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card" data-tone="lemon" aria-hidden="true">
+            <img src="assets/img/img-like-5.webp" alt="" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">🧁</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">위스키</h3>
+                <p class="album-card-copy">최고</p>
+              </div>
+            </div>
+          </article>
+          <article class="album-card" data-tone="aqua" aria-hidden="true">
+            <img src="assets/img/img-like-6.webp" alt="" />
+            <div class="album-card-inner">
+              <span class="album-card-emoji" aria-hidden="true">🌊</span>
+              <div class="album-card-text">
+                <h3 class="album-card-title">부가티</h3>
+                <p class="album-card-copy">미래 드림카(ㅜ)</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 관심사 -->
+    <!-- 카드 7개 이상, 이미지/제목/버튼 2개 형식 -->
+    <!-- 반응형 구현 (화면 크기에 따라 5 -> 4 -> 3 -> 2열로 변화) -->
+    <!-- 카드 썸네일 크기 통일, 이미지가 찌그러지지 않아야 함 -->
+    <!-- 카드 hover 시 상승/그림자 애니메이션 -->
+    <!-- 좋아요/싫어요 hover 시 자연스러운 컬러 변경 -->
+    <section id="interests" class="interests-section" aria-labelledby="interests-title">
+      <div class="section-heading">
+        <h2 id="interests-title">내 관심사</h2>
+        <p>최근에 자주 보고, 먹고, 저장해두는 것들을 카드 형식으로 정리해둔 섹션입니다.</p>
+      </div>
+      <div class="interests-grid">
+        <article class="interest-card" data-theme="cream">
+          <div class="interest-card-thumb">
+            <span class="interest-card-thumb-emoji" aria-hidden="true">🎵</span>
+          </div>
+          <div class="interest-card-body">
+            <h3 class="interest-card-title">유우리</h3>
+            <div class="interest-card-actions">
+              <button class="interest-card-button like" type="button" aria-label="유우리 좋아요 버튼">좋아요</button>
+              <button class="interest-card-button dislike" type="button" aria-label="유우리 싫어요 버튼">싫어요</button>
+            </div>
+          </div>
+        </article>
+        <article class="interest-card" data-theme="mint">
+          <div class="interest-card-thumb">
+            <span class="interest-card-thumb-emoji" aria-hidden="true">🏂</span>
+          </div>
+          <div class="interest-card-body">
+            <h3 class="interest-card-title">최가온</h3>
+            <div class="interest-card-actions">
+              <button class="interest-card-button like" type="button" aria-label="최가온 좋아요 버튼">좋아요</button>
+              <button class="interest-card-button dislike" type="button" aria-label="최가온 싫어요 버튼">싫어요</button>
+            </div>
+          </div>
+        </article>
+        <article class="interest-card" data-theme="sky">
+          <div class="interest-card-thumb">
+            <span class="interest-card-thumb-emoji" aria-hidden="true">🐱</span>
+          </div>
+          <div class="interest-card-body">
+            <h3 class="interest-card-title">고양이</h3>
+            <div class="interest-card-actions">
+              <button class="interest-card-button like" type="button" aria-label="고양이 좋아요 버튼">좋아요</button>
+              <button class="interest-card-button dislike" type="button" aria-label="고양이 싫어요 버튼">싫어요</button>
+            </div>
+          </div>
+        </article>
+        <article class="interest-card" data-theme="pink">
+          <div class="interest-card-thumb">
+            <span class="interest-card-thumb-emoji" aria-hidden="true">💻</span>
+          </div>
+          <div class="interest-card-body">
+            <h3 class="interest-card-title">코딩</h3>
+            <div class="interest-card-actions">
+              <button class="interest-card-button like" type="button" aria-label="코딩 좋아요 버튼">좋아요</button>
+              <button class="interest-card-button dislike" type="button" aria-label="코딩 싫어요 버튼">싫어요</button>
+            </div>
+          </div>
+        </article>
+        <article class="interest-card" data-theme="violet">
+          <div class="interest-card-thumb">
+            <span class="interest-card-thumb-emoji" aria-hidden="true">🍜</span>
+          </div>
+          <div class="interest-card-body">
+            <h3 class="interest-card-title">라멘</h3>
+            <div class="interest-card-actions">
+              <button class="interest-card-button like" type="button" aria-label="라멘 좋아요 버튼">좋아요</button>
+              <button class="interest-card-button dislike" type="button" aria-label="라멘 싫어요 버튼">싫어요</button>
+            </div>
+          </div>
+        </article>
+        <article class="interest-card" data-theme="sand">
+          <div class="interest-card-thumb">
+            <span class="interest-card-thumb-emoji" aria-hidden="true">🥃</span>
+          </div>
+          <div class="interest-card-body">
+            <h3 class="interest-card-title">위스키</h3>
+            <div class="interest-card-actions">
+              <button class="interest-card-button like" type="button" aria-label="위스키 좋아요 버튼">좋아요</button>
+              <button class="interest-card-button dislike" type="button" aria-label="위스키 싫어요 버튼">싫어요</button>
+            </div>
+          </div>
+        </article>
+        <article class="interest-card" data-theme="cream">
+          <div class="interest-card-thumb">
+            <span class="interest-card-thumb-emoji" aria-hidden="true">🥶</span>
+          </div>
+          <div class="interest-card-body">
+            <h3 class="interest-card-title">평양냉면</h3>
+            <div class="interest-card-actions">
+              <button class="interest-card-button like" type="button" aria-label="평양냉면 좋아요 버튼">좋아요</button>
+              <button class="interest-card-button dislike" type="button" aria-label="평양냉면 싫어요 버튼">싫어요</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- To. 웹왔니 -->
+    <!-- 텍스트 앞 뒤 아이콘은 가상 요소로 추가 (하드 코딩 x) -->
+    <section id="to-webotni" class="to-webotni-section" aria-labelledby="to-webotni-title">
+      <div class="section-heading">
+        <h2 id="to-webotni-title">To. 웹왔니</h2>
+      </div>
+      <div class="message-card">
+        <div class="message-list">
+          <p class="message-item">이번 과제도 끝까지 잘 해보겠습니다.</p>
+          <p class="message-item">앞으로 더 재밌는 웹페이지를 만들고 싶어요.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 페이지 하단에 위치 (아래 여백 없어야 함) -->
+  <footer class="site-footer">
+    <p>읽어주셔서 감사합니다 🫠🫠</p>
+  </footer>
+</div>
+</body>
+
+</html>

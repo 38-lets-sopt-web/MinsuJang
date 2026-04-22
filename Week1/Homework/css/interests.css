@@ -1,0 +1,162 @@
+.interests-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-height: auto;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.interest-card {
+  overflow: hidden;
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 16px 34px rgba(17, 17, 17, 0.1);
+  transform: translateY(0);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.interest-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 40px rgba(17, 17, 17, 0.16);
+}
+
+.interest-card-thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.interest-card-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.45), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(17, 17, 17, 0.12));
+}
+
+.interest-card[data-theme="cream"] .interest-card-thumb {
+  background: linear-gradient(145deg, #fff7ec, #f3d4ba);
+}
+
+.interest-card[data-theme="mint"] .interest-card-thumb {
+  background: linear-gradient(145deg, #eefdf7, #bdeed7);
+}
+
+.interest-card[data-theme="sky"] .interest-card-thumb {
+  background: linear-gradient(145deg, #f2fbff, #bee7ff);
+}
+
+.interest-card[data-theme="pink"] .interest-card-thumb {
+  background: linear-gradient(145deg, #fff3f7, #ffc7d5);
+}
+
+.interest-card[data-theme="violet"] .interest-card-thumb {
+  background: linear-gradient(145deg, #f8f4ff, #d9c9ff);
+}
+
+.interest-card[data-theme="sand"] .interest-card-thumb {
+  background: linear-gradient(145deg, #faf5eb, #e6d3b5);
+}
+
+.interest-card[data-theme="lemon"] .interest-card-thumb {
+  background: linear-gradient(145deg, #fffdf1, #ffe68c);
+}
+
+.interest-card-thumb-emoji {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 72px;
+}
+
+.interest-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+}
+
+.interest-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.interest-card-title::before {
+  content: "✦";
+  color: #ffb74d;
+  font-size: 14px;
+}
+
+.interest-card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.interest-card-button {
+  flex: 1;
+  border-radius: 999px;
+  padding: 12px 14px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.interest-card-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.96);
+}
+
+.interest-card-button:focus-visible {
+  outline: 3px solid #46b9d1;
+  outline-offset: 3px;
+  filter: brightness(0.96);
+}
+
+.interest-card-button.like {
+  background: #91caff;
+}
+
+.interest-card-button.dislike {
+  background: #ffb0b8;
+}
+
+@media (max-width: 1280px) {
+  .interests-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .interests-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .interests-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .interests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .interest-card-thumb-emoji {
+    font-size: 62px;
+  }
+}

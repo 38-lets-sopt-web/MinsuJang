@@ -1,0 +1,51 @@
+.to-webotni-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-height: auto;
+}
+
+.message-card {
+  border-radius: 28px;
+  background: #fff;
+  padding: 28px 32px;
+  box-shadow: 0 18px 38px rgba(17, 17, 17, 0.08);
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.message-item {
+  position: relative;
+  padding-left: 46px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #333;
+}
+
+.message-item::before {
+  content: "🔊";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.message-item::after {
+  content: "✅";
+  margin-left: 14px;
+}
+
+@media (max-width: 640px) {
+  .message-card {
+    padding: 22px 20px;
+  }
+
+  .message-item {
+    padding-left: 38px;
+    font-size: 16px;
+  }
+}

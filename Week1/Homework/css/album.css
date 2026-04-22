@@ -1,0 +1,152 @@
+.album-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-height: auto;
+}
+
+.album-shell {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 0;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #dff7ff, #d8f2ff);
+}
+
+.album-shell::before,
+.album-shell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.album-shell::before {
+  left: 0;
+  background: linear-gradient(90deg, #dff7ff, rgba(223, 247, 255, 0));
+}
+
+.album-shell::after {
+  right: 0;
+  background: linear-gradient(270deg, #d8f2ff, rgba(216, 242, 255, 0));
+}
+
+.album-track {
+  display: flex;
+  width: max-content;
+  gap: 18px;
+  padding-left: 18px;
+  animation: album-marquee 28s linear infinite;
+}
+
+.album-shell:hover .album-track {
+  animation-play-state: paused;
+}
+
+.album-card {
+  flex: 0 0 auto;
+  width: 240px;
+  aspect-ratio: 4 / 5;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 14px 28px rgba(17, 17, 17, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.album-card.tall {
+  width: 300px;
+}
+
+.album-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-card-inner {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.38), transparent 34%),
+    linear-gradient(180deg, rgba(17, 17, 17, 0.02) 25%, rgba(17, 17, 17, 0.44) 100%);
+}
+
+.album-card-emoji {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-size: 28px;
+}
+
+.album-card-text {
+  position: relative;
+  z-index: 1;
+}
+
+.album-card-title {
+  font-size: 26px;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.album-card-copy {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+}
+
+.album-card-title,
+.album-card-emoji {
+  color: #fff;
+}
+
+@keyframes album-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 9px));
+  }
+}
+
+@media (max-width: 898px) {
+  .album-shell {
+    border-radius: 24px;
+    padding: 20px 0;
+  }
+
+  .album-shell::before,
+  .album-shell::after {
+    width: 36px;
+  }
+
+  .album-card {
+    width: 200px;
+    border-radius: 22px;
+  }
+
+  .album-card.tall {
+    width: 240px;
+  }
+
+  .album-card-title {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album-track {
+    animation: none;
+  }
+}

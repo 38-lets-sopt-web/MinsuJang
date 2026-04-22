@@ -1,0 +1,109 @@
+.photo-dump-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.photo-dump-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-areas:
+    "card-a card-b card-c card-c"
+    "card-d card-d card-d card-e"
+    "card-d card-d card-d card-f";
+  gap: 18px;
+  min-height: 760px;
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  min-height: 220px;
+  color: #111;
+  box-shadow: 0 18px 40px rgba(17, 17, 17, 0.08);
+  transform: translateY(0) scale(1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.photo-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 24px 46px rgba(17, 17, 17, 0.14);
+}
+
+.photo-card:hover > img {
+  transform: scale(1.06);
+}
+
+.photo-card-a {
+  grid-area: card-a;
+}
+
+.photo-card-b {
+  grid-area: card-b;
+}
+
+.photo-card-c {
+  grid-area: card-c;
+}
+
+.photo-card-d {
+  grid-area: card-d;
+}
+
+.photo-card-e {
+  grid-area: card-e;
+}
+
+.photo-card-f {
+  grid-area: card-f;
+}
+
+@media (max-width: 1100px) {
+  .photo-dump-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "card-a card-b"
+      "card-c card-c"
+      "card-d card-d"
+      "card-e card-f";
+    min-height: auto;
+  }
+
+  .photo-card-c,
+  .photo-card-d,
+  .photo-card-e,
+  .photo-card-f {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .photo-dump-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "card-a"
+      "card-b"
+      "card-c"
+      "card-d"
+      "card-e"
+      "card-f";
+  }
+
+  .photo-card,
+  .photo-card-c,
+  .photo-card-d,
+  .photo-card-e,
+  .photo-card-f {
+    min-height: 220px;
+  }
+}
