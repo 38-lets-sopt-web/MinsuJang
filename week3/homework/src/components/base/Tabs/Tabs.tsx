@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cn } from '@lib/cn';
-import * as styles from './Tabs.css';
+import * as S from './Tabs.css';
 
 type TabsRootProps = {
   children: ReactNode;
@@ -15,7 +15,7 @@ type TabsListProps = {
 };
 
 export function TabsList({ children }: TabsListProps) {
-  return <div className={styles.tabsList}>{children}</div>;
+  return <div className={S.tabsList}>{children}</div>;
 }
 
 type TabsTriggerProps = {
@@ -31,11 +31,7 @@ export function TabsTrigger({
 }: TabsTriggerProps) {
   return (
     <button
-      className={cn(
-        styles.tabsTrigger,
-        active ? styles.tabsState.active : styles.tabsState.inactive,
-        className,
-      )}
+      className={cn(S.tabsTrigger, active ? S.tabsState.active : S.tabsState.inactive, className)}
       type={type}
       {...props}
     >

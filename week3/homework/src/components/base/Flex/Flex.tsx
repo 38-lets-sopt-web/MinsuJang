@@ -1,14 +1,14 @@
 import type { CSSProperties, ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 import { cn } from '@lib/cn';
-import * as styles from './Flex.css';
+import * as S from './Flex.css';
 
 type FlexProps<T extends ElementType> = {
   as?: T;
   children: ReactNode;
-  direction?: keyof typeof styles.direction;
-  align?: keyof typeof styles.align;
-  justify?: keyof typeof styles.justify;
-  wrap?: keyof typeof styles.wrap;
+  direction?: keyof typeof S.direction;
+  align?: keyof typeof S.align;
+  justify?: keyof typeof S.justify;
+  wrap?: keyof typeof S.wrap;
   gap?: CSSProperties['gap'];
 } & Omit<ComponentPropsWithoutRef<T>, 'as' | 'children'>;
 
@@ -29,11 +29,11 @@ export function Flex<T extends ElementType = 'div'>({
   return (
     <Component
       className={cn(
-        styles.flex,
-        styles.direction[direction],
-        styles.align[align],
-        styles.justify[justify],
-        styles.wrap[wrap],
+        S.flex,
+        S.direction[direction],
+        S.align[align],
+        S.justify[justify],
+        S.wrap[wrap],
         className,
       )}
       style={{ ...style, gap }}

@@ -41,7 +41,7 @@ export const variant = styleVariants({
 export const size = styleVariants({
   sm: {
     fontSize: vars.font.labelMd,
-    height: '40px',
+    height: '2.5rem',
     padding: `0 ${vars.space.buttonPaddingX}`,
   },
   md: {},

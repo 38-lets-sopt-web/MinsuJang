@@ -16,7 +16,7 @@ export const tabsTrigger = style({
   fontSize: vars.font.labelMd,
   fontWeight: vars.font.weightBold,
   justifyContent: 'center',
-  minWidth: '64px',
+  minWidth: '4rem',
   padding: `0 ${vars.space.lg}`,
   transition: `background ${vars.motion.fast}, color ${vars.motion.fast}, border-color ${vars.motion.fast}`,
 });
