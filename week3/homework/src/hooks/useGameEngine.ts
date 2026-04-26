@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { createInitialGameState, LEVEL_CONFIGS } from '@constants/game';
 import { getCellMessage, getInitialMessage, getStatusMessage } from '@lib/gameMessages';
-import { createRandomCellIndex, getBoardCellCount } from '@lib/gameHelpers';
+import { createRandomCellIndex } from '@lib/gameHelpers';
 import { useActiveCell } from '@hooks/internal/useActiveCell';
 import { useGameFeedback } from '@hooks/internal/useGameFeedback';
 import { useGameSession } from '@hooks/internal/useGameSession';
@@ -101,11 +101,6 @@ export function useGameEngine(initialLevel: Level = 1) {
     setMessage(getStatusMessage('stopped'));
   }, [resetBoardState, selectedLevel, setMessage, stopSession]);
 
-  const resetGame = useCallback(() => {
-    resetBoardState(selectedLevel);
-    resetSession();
-  }, [resetBoardState, resetSession, selectedLevel]);
-
   const handleCellClick = useCallback(() => {
     if (!isPlaying || !activeCell) {
       return;
@@ -142,8 +137,6 @@ export function useGameEngine(initialLevel: Level = 1) {
     setMessage(getInitialMessage());
   }, [closeResultModal, resetBoardState, resetSession, selectedLevel, setMessage]);
 
-  const boardCellCount = getBoardCellCount(selectedLevel);
-
   return {
     state: {
       selectedLevel,
@@ -156,13 +149,11 @@ export function useGameEngine(initialLevel: Level = 1) {
       activeCell,
       isResultModalOpen,
       levelConfig,
-      boardCellCount,
       canChangeLevel: !isPlaying,
     },
     actions: {
       startGame,
       stopGame,
-      resetGame,
       selectLevel,
       handleCellClick,
       dismissResultModal,
