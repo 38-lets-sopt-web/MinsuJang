@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createInitialGameState, LEVEL_CONFIGS } from '@constants/game';
 import { getCellMessage, getInitialMessage, getStatusMessage } from '@lib/gameMessages';
 import { createRandomCellIndex, getBoardCellCount } from '@lib/gameHelpers';
@@ -53,6 +53,38 @@ export function useGameEngine(initialLevel: Level = 1) {
     [closeCell, resetFeedback, resetScoreBoard, resetTimer],
   );
 
+  useEffect(() => {
+    if (!isPlaying || activeCell) {
+      return undefined;
+    }
+
+    const intervalId = window.setInterval(() => {
+      openCell({
+        index: createRandomCellIndex(selectedLevel),
+        kind: createRandomCellKind(),
+      });
+    }, levelConfig.spawnIntervalMs);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [activeCell, isPlaying, levelConfig.spawnIntervalMs, openCell, selectedLevel]);
+
+  useEffect(() => {
+    if (!activeCell) {
+      return undefined;
+    }
+
+    const timeoutMs = activeCell.state === 'hit' ? 700 : levelConfig.visibleDurationMs;
+    const timeoutId = window.setTimeout(() => {
+      closeCell();
+    }, timeoutMs);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [activeCell, closeCell, levelConfig.visibleDurationMs]);
+
   const startGame = useCallback(() => {
     resetBoardState(selectedLevel);
     startSession();
@@ -64,10 +96,10 @@ export function useGameEngine(initialLevel: Level = 1) {
   }, [openCell, resetBoardState, selectedLevel, setMessage, startSession]);
 
   const stopGame = useCallback(() => {
+    resetBoardState(selectedLevel);
     stopSession();
     setMessage(getStatusMessage('stopped'));
-    closeCell();
-  }, [closeCell, setMessage, stopSession]);
+  }, [resetBoardState, selectedLevel, setMessage, stopSession]);
 
   const resetGame = useCallback(() => {
     resetBoardState(selectedLevel);
@@ -105,9 +137,10 @@ export function useGameEngine(initialLevel: Level = 1) {
 
   const dismissResultModal = useCallback(() => {
     closeResultModal();
+    resetBoardState(selectedLevel);
     resetSession();
     setMessage(getInitialMessage());
-  }, [closeResultModal, resetSession, setMessage]);
+  }, [closeResultModal, resetBoardState, resetSession, selectedLevel, setMessage]);
 
   const boardCellCount = getBoardCellCount(selectedLevel);
 

@@ -1,69 +1,83 @@
-import { Button } from '@components/base/Button';
-import { Card } from '@components/base/Card';
-import { Flex } from '@components/base/Flex';
-import { Grid } from '@components/base/Grid';
+import { GameBoard } from '@components/composed/GameBoard';
+import { GameControls } from '@components/composed/GameControls';
+import { GameResultModal } from '@components/composed/GameResultModal';
+import { GameStatusPanel } from '@components/composed/GameStatusPanel';
 import { Section } from '@components/base/Section';
-import { Text } from '@components/base/Text';
-import * as styles from './GamePage.css';
+import { useGameEngine } from '@hooks/useGameEngine';
+import { useGameResult } from '@hooks/useGameResult';
+import { useEffect, useRef } from 'react';
+import type { RankingRecord } from '@/types/ranking';
+import * as S from './GamePage.css';
 
-const holes = Array.from({ length: 9 }, (_, index) => index);
+type GamePageProps = {
+  onSaveRecord: (record: RankingRecord) => void;
+};
 
-export function GamePage() {
+export function GamePage({ onSaveRecord }: GamePageProps) {
+  const engine = useGameEngine();
+  const result = useGameResult({
+    gameStatus: engine.state.gameStatus,
+    level: engine.state.selectedLevel,
+    score: engine.state.score,
+    successCount: engine.state.successCount,
+    failCount: engine.state.failCount,
+    timeLeft: engine.state.timeLeft,
+  });
+  const hasSavedRecordRef = useRef(false);
+
+  useEffect(() => {
+    if (engine.state.gameStatus !== 'finished') {
+      hasSavedRecordRef.current = false;
+      return;
+    }
+
+    if (!result.state.canSaveRecord || hasSavedRecordRef.current) {
+      return;
+    }
+
+    onSaveRecord({
+      id: crypto.randomUUID(),
+      level: result.state.resultSummary.level,
+      score: result.state.resultSummary.score,
+      successTime: result.state.resultSummary.successTime,
+      createdAt: new Date().toISOString(),
+    });
+    hasSavedRecordRef.current = true;
+  }, [engine.state.gameStatus, onSaveRecord, result.state]);
+
   return (
     <Section panel>
-      <div className={styles.gameShell}>
-        <Flex direction='column' gap='24px'>
-          <Card.Root className={styles.statFull}>
-            <Flex direction='column' align='center' justify='center' gap='16px'>
-              <Card.Title>남은 시간</Card.Title>
-              <Card.Value>20.0</Card.Value>
-            </Flex>
-          </Card.Root>
-          <Card.Root className={styles.statFull}>
-            <Flex direction='column' align='center' justify='center' gap='16px'>
-              <Card.Title>총 점수</Card.Title>
-              <Card.Value>0</Card.Value>
-            </Flex>
-          </Card.Root>
-          <div className={styles.statsGrid}>
-            <Card.Root className={styles.statHalf}>
-              <Flex direction='column' align='center' justify='center' gap='16px'>
-                <Text tone='success'>성공</Text>
-                <Card.Value>0</Card.Value>
-              </Flex>
-            </Card.Root>
-            <Card.Root className={styles.statHalf}>
-              <Flex direction='column' align='center' justify='center' gap='16px'>
-                <Text tone='danger'>실패</Text>
-                <Card.Value>0</Card.Value>
-              </Flex>
-            </Card.Root>
-          </div>
-          <Card.Root className={styles.statFull}>
-            <Flex direction='column' gap='20px'>
-              <Card.Title>안내 메시지</Card.Title>
-              <Text tone='secondary'>게임 시작 전입니다.</Text>
-            </Flex>
-          </Card.Root>
-        </Flex>
+      <div className={S.gameShell}>
+        <GameStatusPanel
+          failCount={engine.state.failCount}
+          message={engine.state.message}
+          score={engine.state.score}
+          successCount={engine.state.successCount}
+          timeLeft={engine.state.timeLeft}
+        />
 
         <Section panel>
-          <Flex className={styles.controlsRow} align='center' justify='between' gap='20px'>
-            <div className={styles.selector}>Level 2</div>
-            <Flex gap='12px'>
-              <Button variant='primary'>시작</Button>
-              <Button variant='danger'>중단</Button>
-            </Flex>
-          </Flex>
-          <div className={styles.boardFrame}>
-            <Grid columns='repeat(3, minmax(0, 1fr))' gap='20px'>
-              {holes.map((hole) => (
-                <div key={hole} className={styles.boardHole} />
-              ))}
-            </Grid>
-          </div>
+          <GameControls
+            canChangeLevel={engine.state.canChangeLevel}
+            selectedLevel={engine.state.selectedLevel}
+            onLevelChange={engine.actions.selectLevel}
+            onStart={engine.actions.startGame}
+            onStop={engine.actions.stopGame}
+          />
+          <GameBoard
+            activeCell={engine.state.activeCell}
+            cols={engine.state.levelConfig.cols}
+            rows={engine.state.levelConfig.rows}
+            onCellClick={engine.actions.handleCellClick}
+          />
         </Section>
       </div>
+      <GameResultModal
+        open={engine.state.isResultModalOpen}
+        title={result.state.resultTitle}
+        message={result.state.resultMessage}
+        onClose={engine.actions.dismissResultModal}
+      />
     </Section>
   );
 }
