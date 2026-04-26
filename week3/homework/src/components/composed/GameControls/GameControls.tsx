@@ -1,5 +1,6 @@
 import { Button } from '@components/base/Button';
 import { Flex } from '@components/base/Flex';
+import { LEVEL_CONFIGS } from '@constants/game';
 import type { Level } from '@/types/game';
 import * as S from './GameControls.css';
 
@@ -11,11 +12,10 @@ type GameControlsProps = {
   onStop: () => void;
 };
 
-const levelOptions: Array<{ label: string; value: Level }> = [
-  { label: 'Level 1', value: 1 },
-  { label: 'Level 2', value: 2 },
-  { label: 'Level 3', value: 3 },
-];
+const levelOptions = Object.values(LEVEL_CONFIGS).map((config) => ({
+  label: `Level ${config.level}`,
+  value: config.level,
+}));
 
 export function GameControls({
   selectedLevel,

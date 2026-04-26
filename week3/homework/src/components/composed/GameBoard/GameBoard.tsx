@@ -10,6 +10,30 @@ type GameBoardProps = {
   onCellClick: () => void;
 };
 
+function getHoleStateClass(isActive: boolean, activeCell: ActiveCell) {
+  if (!isActive || !activeCell) {
+    return S.holeState.hidden;
+  }
+
+  if (activeCell.state === 'hit') {
+    return S.holeState.hit;
+  }
+
+  return activeCell.kind === 'mole' ? S.holeState.visibleMole : S.holeState.visibleBomb;
+}
+
+function getHoleLabel(isActive: boolean, activeCell: ActiveCell) {
+  if (!isActive || !activeCell) {
+    return '';
+  }
+
+  if (activeCell.state === 'hit') {
+    return '잡음';
+  }
+
+  return activeCell.kind === 'mole' ? '두더지' : '폭탄';
+}
+
 export function GameBoard({ rows, cols, activeCell, onCellClick }: GameBoardProps) {
   const totalCells = rows * cols;
   const cells = Array.from({ length: totalCells }, (_, index) => index);
@@ -19,31 +43,18 @@ export function GameBoard({ rows, cols, activeCell, onCellClick }: GameBoardProp
       <Grid columns={`repeat(${cols}, minmax(0, 1fr))`} gap='1.25rem'>
         {cells.map((cellIndex) => {
           const isActive = activeCell?.index === cellIndex;
-          const className = cn(
-            S.boardHole,
-            isActive
-              ? activeCell.state === 'hit'
-                ? S.holeState.hit
-                : activeCell.kind === 'mole'
-                  ? S.holeState.visibleMole
-                  : S.holeState.visibleBomb
-              : S.holeState.hidden,
-          );
+          const className = cn(S.boardHole, getHoleStateClass(isActive, activeCell));
+          const label = getHoleLabel(isActive, activeCell);
+          const canClick = isActive && activeCell?.state !== 'hit';
 
           return (
             <button
               key={cellIndex}
               className={className}
               type='button'
-              onClick={isActive && activeCell.state !== 'hit' ? onCellClick : undefined}
+              onClick={canClick ? onCellClick : undefined}
             >
-              {isActive
-                ? activeCell.state === 'hit'
-                  ? '잡음'
-                  : activeCell.kind === 'mole'
-                    ? '두더지'
-                    : '폭탄'
-                : ''}
+              {label}
             </button>
           );
         })}
