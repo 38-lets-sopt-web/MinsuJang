@@ -1,8 +1,8 @@
-import { headerPanel, titleRow } from '@/app.css';
 import { Flex } from '@components/base/Flex';
 import { Section } from '@components/base/Section';
 import { Tabs } from '@components/base/Tabs';
 import { Title } from '@components/base/Title';
+import * as S from './AppHeader.css';
 
 type TabKey = 'game' | 'ranking';
 
@@ -13,8 +13,8 @@ type AppHeaderProps = {
 
 export function AppHeader({ activeTab, onChangeTab }: AppHeaderProps) {
   return (
-    <Section panel className={headerPanel}>
-      <Flex className={titleRow} align='center' gap='1.25rem'>
+    <Section panel className={S.headerPanel}>
+      <Flex className={S.titleRow} align='center' gap='1.25rem'>
         <Title as='h1' level='page'>
           두더지 게임
         </Title>

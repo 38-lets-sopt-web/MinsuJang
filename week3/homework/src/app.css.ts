@@ -6,12 +6,3 @@ export const app = style({
   maxWidth: vars.size.pageWidth,
   padding: `${vars.space.pageTop} ${vars.space.pagePadding} ${vars.space.pageBottom}`,
 });
-
-export const headerPanel = style({
-  marginBottom: vars.space.xl,
-  minHeight: vars.size.headerHeight,
-});
-
-export const titleRow = style({
-  height: '100%',
-});

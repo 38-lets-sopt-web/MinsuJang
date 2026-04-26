@@ -3,8 +3,8 @@ import { Flex } from '@components/base/Flex';
 import { Text } from '@components/base/Text';
 import { Title } from '@components/base/Title';
 import { formatRecordDate } from '@lib/time';
-import * as S from '@pages/RankingPage/RankingPage.css';
 import type { RankingRecord } from '@/types/ranking';
+import * as S from './RankingBoard.css';
 
 type RankedRecord = RankingRecord & { rank: number };
 
