@@ -19,7 +19,7 @@ export function RankingPage({ records, onResetRecords }: RankingPageProps) {
   };
 
   return (
-    <Section panel>
+    <Section panel aria-labelledby='ranking-tab' id='ranking-panel' role='tabpanel'>
       <RankingBoard records={records} onReset={handleReset} />
     </Section>
   );

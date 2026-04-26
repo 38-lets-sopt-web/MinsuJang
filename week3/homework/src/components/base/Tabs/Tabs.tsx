@@ -1,21 +1,25 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '@lib/cn';
 import * as S from './Tabs.css';
 
 type TabsRootProps = {
   children: ReactNode;
-};
+} & ComponentPropsWithoutRef<'div'>;
 
-export function TabsRoot({ children }: TabsRootProps) {
-  return <div>{children}</div>;
+export function TabsRoot({ children, ...props }: TabsRootProps) {
+  return <div {...props}>{children}</div>;
 }
 
 type TabsListProps = {
   children: ReactNode;
-};
+} & ComponentPropsWithoutRef<'div'>;
 
-export function TabsList({ children }: TabsListProps) {
-  return <div className={S.tabsList}>{children}</div>;
+export function TabsList({ children, className, ...props }: TabsListProps) {
+  return (
+    <div className={cn(S.tabsList, className)} role='tablist' {...props}>
+      {children}
+    </div>
+  );
 }
 
 type TabsTriggerProps = {
@@ -31,7 +35,9 @@ export function TabsTrigger({
 }: TabsTriggerProps) {
   return (
     <button
+      aria-selected={active}
       className={cn(S.tabsTrigger, active ? S.tabsState.active : S.tabsState.inactive, className)}
+      role='tab'
       type={type}
       {...props}
     >

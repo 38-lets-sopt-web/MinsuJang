@@ -45,7 +45,7 @@ export function GamePage({ onSaveRecord }: GamePageProps) {
   }, [engine.state.gameStatus, onSaveRecord, result.state]);
 
   return (
-    <Section panel>
+    <Section panel aria-labelledby='game-tab' id='game-panel' role='tabpanel'>
       <div className={S.gameShell}>
         <GameStatusPanel
           failCount={engine.state.failCount}

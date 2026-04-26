@@ -23,7 +23,7 @@ export function GameStatusPanel({
       <Card.Root className={S.statFull}>
         <Flex direction='column' align='center' justify='center' gap='1rem'>
           <Card.Title>남은 시간</Card.Title>
-          <Card.Value>{timeLeft.toFixed(1)}</Card.Value>
+          <Card.Value role='timer'>{timeLeft.toFixed(1)}</Card.Value>
         </Flex>
       </Card.Root>
       <Card.Root className={S.statFull}>
@@ -49,7 +49,9 @@ export function GameStatusPanel({
       <Card.Root className={S.statFull}>
         <Flex direction='column' gap='1.25rem'>
           <Card.Title>안내 메시지</Card.Title>
-          <Text tone='secondary'>{message}</Text>
+          <Text aria-live='polite' tone='secondary'>
+            {message}
+          </Text>
         </Flex>
       </Card.Root>
     </Flex>

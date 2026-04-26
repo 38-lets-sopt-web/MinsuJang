@@ -20,10 +20,20 @@ export function AppHeader({ activeTab, onChangeTab }: AppHeaderProps) {
         </Title>
         <Tabs.Root>
           <Tabs.List>
-            <Tabs.Trigger active={activeTab === 'game'} onClick={() => onChangeTab('game')}>
+            <Tabs.Trigger
+              active={activeTab === 'game'}
+              aria-controls='game-panel'
+              id='game-tab'
+              onClick={() => onChangeTab('game')}
+            >
               게임
             </Tabs.Trigger>
-            <Tabs.Trigger active={activeTab === 'ranking'} onClick={() => onChangeTab('ranking')}>
+            <Tabs.Trigger
+              active={activeTab === 'ranking'}
+              aria-controls='ranking-panel'
+              id='ranking-tab'
+              onClick={() => onChangeTab('ranking')}
+            >
               랭킹
             </Tabs.Trigger>
           </Tabs.List>

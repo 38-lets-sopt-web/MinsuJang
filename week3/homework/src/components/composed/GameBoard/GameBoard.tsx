@@ -34,6 +34,22 @@ function getHoleLabel(isActive: boolean, activeCell: ActiveCell) {
   return activeCell.kind === 'mole' ? '두더지' : '폭탄';
 }
 
+function getHoleAriaLabel(cellIndex: number, isActive: boolean, activeCell: ActiveCell) {
+  const holeNumber = cellIndex + 1;
+
+  if (!isActive || !activeCell) {
+    return `빈 구멍 ${holeNumber}`;
+  }
+
+  if (activeCell.state === 'hit') {
+    return `맞은 두더지 구멍 ${holeNumber}`;
+  }
+
+  return activeCell.kind === 'mole'
+    ? `두더지가 나온 구멍 ${holeNumber}`
+    : `폭탄이 나온 구멍 ${holeNumber}`;
+}
+
 export function GameBoard({ rows, cols, activeCell, onCellClick }: GameBoardProps) {
   const totalCells = rows * cols;
   const cells = Array.from({ length: totalCells }, (_, index) => index);
@@ -46,9 +62,11 @@ export function GameBoard({ rows, cols, activeCell, onCellClick }: GameBoardProp
           const className = cn(S.boardHole, getHoleStateClass(isActive, activeCell));
           const label = getHoleLabel(isActive, activeCell);
           const canClick = isActive && activeCell?.state !== 'hit';
+          const ariaLabel = getHoleAriaLabel(cellIndex, isActive, activeCell);
 
           return (
             <button
+              aria-label={ariaLabel}
               key={cellIndex}
               className={className}
               type='button'

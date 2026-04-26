@@ -27,6 +27,7 @@ export function GameControls({
   return (
     <Flex className={S.controlsRow} align='center' justify='between' gap='1.25rem'>
       <select
+        aria-label='레벨 선택'
         className={S.selector}
         disabled={!canChangeLevel}
         value={selectedLevel}
