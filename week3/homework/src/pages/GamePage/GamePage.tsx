@@ -39,7 +39,6 @@ export function GamePage({ onSaveRecord }: GamePageProps) {
       id: crypto.randomUUID(),
       level: result.state.resultSummary.level,
       score: result.state.resultSummary.score,
-      successTime: result.state.resultSummary.successTime,
       createdAt: new Date().toISOString(),
     });
     hasSavedRecordRef.current = true;

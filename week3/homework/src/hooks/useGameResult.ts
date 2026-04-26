@@ -21,8 +21,6 @@ export function useGameResult({
 }: UseGameResultParams) {
   const state = useMemo(() => {
     const isFinished = gameStatus === 'finished';
-    const successTime =
-      successCount > 0 ? Number((successCount + Math.max(score, 0)).toFixed(2)) : 0;
     const canSaveRecord = isFinished && score > 0;
 
     return {
@@ -42,7 +40,6 @@ export function useGameResult({
         successCount,
         failCount,
         timeLeft,
-        successTime,
       },
     };
   }, [failCount, gameStatus, level, score, successCount, timeLeft]);

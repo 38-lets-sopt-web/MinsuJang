@@ -4,6 +4,5 @@ export type RankingRecord = {
   id: string;
   level: Level;
   score: number;
-  successTime: number;
   createdAt: string;
 };
