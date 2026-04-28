@@ -1,5 +1,5 @@
 import { Flex } from '@components/base/Flex';
-import { Section } from '@components/base/Section';
+import { Header } from '@components/base/Header';
 import { Tabs } from '@components/base/Tabs';
 import { Title } from '@components/base/Title';
 import * as S from './AppHeader.css';
@@ -13,7 +13,7 @@ type AppHeaderProps = {
 
 export function AppHeader({ activeTab, onChangeTab }: AppHeaderProps) {
   return (
-    <Section panel className={S.headerPanel}>
+    <Header panel className={S.headerPanel}>
       <Flex className={S.titleRow} align='center' gap='1.25rem'>
         <Title as='h1' level='page'>
           두더지 게임
@@ -39,6 +39,6 @@ export function AppHeader({ activeTab, onChangeTab }: AppHeaderProps) {
           </Tabs.List>
         </Tabs.Root>
       </Flex>
-    </Section>
+    </Header>
   );
 }
