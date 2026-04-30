@@ -1,0 +1,169 @@
+@layer components {
+  .expense-board {
+    overflow: hidden;
+  }
+
+  .expense-board__header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-24);
+    padding: var(--space-32);
+    border-bottom: 0.1rem solid var(--color-border-soft);
+  }
+
+  .expense-board__eyebrow {
+    margin-bottom: var(--space-8);
+    color: var(--color-text-subtle);
+    font-size: var(--text-micro-size);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .expense-board__count {
+    margin-top: var(--space-8);
+    color: var(--color-text-muted);
+  }
+
+  .expense-board__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-16);
+    width: 100%;
+  }
+
+  .expense-board__buttons {
+    display: flex;
+    gap: var(--space-10);
+  }
+
+  .sort-control {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    min-width: 16rem;
+    color: var(--color-text-muted);
+    font-size: var(--text-caption-size);
+  }
+
+  .expense-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .expense-table th,
+  .expense-table td {
+    padding: 1.8rem var(--space-20);
+    border-bottom: 0.1rem solid var(--color-border-soft);
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  .expense-table th {
+    color: var(--color-text-subtle);
+    font-size: var(--text-caption-size);
+    font-weight: 600;
+    line-height: var(--text-caption-line);
+  }
+
+  .expense-table tbody tr {
+    transition: background-color var(--transition-fast);
+  }
+
+  .expense-table tbody tr:hover {
+    background: rgba(0, 0, 0, 0.018);
+  }
+
+  .expense-table__title-button {
+    padding: 0;
+    color: var(--color-text);
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  .expense-table__title-button:hover {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+
+  .amount-badge,
+  .type-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2rem;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-caption-size);
+    line-height: 1;
+    letter-spacing: var(--text-caption-track);
+  }
+
+  .amount-badge--expense,
+  .type-badge--expense {
+    background: rgba(255, 59, 48, 0.08);
+    color: #d93025;
+  }
+
+  .amount-badge--income,
+  .type-badge--income {
+    background: rgba(52, 199, 89, 0.12);
+    color: #15803d;
+  }
+
+  .expense-table__summary {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-20);
+    font-family: var(--font-display);
+    font-size: var(--text-title-size);
+    font-weight: 600;
+  }
+
+  .expense-table__empty-row td {
+    padding-block: var(--space-48);
+    color: var(--color-text-subtle);
+    text-align: center;
+  }
+
+  @media (max-width: 834px) {
+    .expense-board__controls {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+
+    .sort-control {
+      min-width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .expense-board__header {
+      padding: var(--space-24);
+    }
+
+    .expense-board__buttons {
+      width: 100%;
+    }
+
+    .expense-board__buttons .button {
+      flex: 1;
+    }
+
+    .expense-table th,
+    .expense-table td {
+      padding: var(--space-14) var(--space-12, 1.2rem);
+      font-size: var(--text-caption-size);
+    }
+
+    .expense-table__summary {
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 1.8rem;
+    }
+  }
+}

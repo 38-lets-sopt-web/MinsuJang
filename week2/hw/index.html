@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="지출과 수입을 관리하는 가계부 페이지">
+  <link rel="stylesheet" href="./styles/index.css">
+  <title>가계부</title>
+</head>
+<body>
+<!-- 상단 요약 헤더: 좌/중/우 3등분 영역 -->
+<header class="page-header">
+  <div class="page-header__section page-header__section--start">
+    <button type="button" class="page-header__logo" id="reload-button" aria-label="페이지 새로고침">
+      A
+    </button>
+  </div>
+
+  <div class="page-header__section page-header__section--center">
+    <div class="page-header__title-group">
+      <p class="page-header__eyebrow">Apple Style Ledger</p>
+      <h1>가계부</h1>
+    </div>
+  </div>
+
+  <div class="page-header__section page-header__section--end">
+    <div class="page-header__summary" id="header-summary">
+      <p class="page-header__summary-label">총 내역</p>
+      <strong class="page-header__summary-value">0건</strong>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 필터 영역: 키워드 1개 + 드롭다운 3개 + 적용/초기화 버튼 -->
+  <section class="filter-panel surface-muted" aria-labelledby="filter-title">
+    <div class="filter-panel__heading">
+      <p class="filter-panel__eyebrow">Search Filters</p>
+      <h2 id="filter-title">검색 필터</h2>
+    </div>
+
+    <form id="filter-form" class="filter-grid">
+      <div class="filter-field filter-field--full">
+        <label for="filter-keyword">검색어</label>
+        <input
+          id="filter-keyword"
+          name="keyword"
+          type="text"
+          placeholder="제목, 금액, 날짜, 유형, 카테고리, 결제수단 검색"
+        >
+      </div>
+
+      <div class="filter-field">
+        <label for="filter-type">유형</label>
+        <select id="filter-type" name="type">
+          <option value="">전체</option>
+        </select>
+      </div>
+
+      <div class="filter-field">
+        <label for="filter-category">카테고리</label>
+        <select id="filter-category" name="category">
+          <option value="">전체</option>
+        </select>
+      </div>
+
+      <div class="filter-field">
+        <label for="filter-payment-method">결제수단</label>
+        <select id="filter-payment-method" name="paymentMethod">
+          <option value="">전체</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button type="submit" class="button button-primary">적용</button>
+        <button type="button" class="button button-secondary" id="reset-filter-button">초기화</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- 지출 내역 영역: 정렬, 선택 삭제, 추가, 테이블, 합계 요약 -->
+  <section class="expense-board surface" aria-labelledby="expense-table-title">
+    <header class="expense-board__header">
+      <div class="expense-board__meta">
+        <p class="expense-board__eyebrow">Expense Board</p>
+        <h2 id="expense-table-title">지출 내역</h2>
+        <p class="expense-board__count" id="expense-count-text">총 0건</p>
+      </div>
+
+      <div class="expense-board__controls">
+        <label class="sort-control" for="sort-order">
+          <span>날짜 정렬</span>
+          <select id="sort-order" name="sortOrder">
+            <option value="desc">최신순</option>
+            <option value="asc">오래된순</option>
+          </select>
+        </label>
+
+        <div class="expense-board__buttons">
+          <button type="button" class="button button-secondary" id="delete-selected-button">
+            선택 삭제
+          </button>
+          <button type="button" class="button button-primary" id="open-add-modal-button">
+            추가
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="expense-table-wrapper">
+      <table class="expense-table">
+        <caption class="visually-hidden">가계부 내역 목록</caption>
+        <thead>
+        <tr>
+          <th scope="col">
+            <input type="checkbox" id="select-all-checkbox" aria-label="전체 선택">
+          </th>
+          <th scope="col">제목</th>
+          <th scope="col">금액</th>
+          <th scope="col">날짜</th>
+          <th scope="col">유형</th>
+          <th scope="col">카테고리</th>
+          <th scope="col">결제수단</th>
+        </tr>
+        </thead>
+        <tbody id="expense-table-body"></tbody>
+        <tfoot>
+        <tr>
+          <td colspan="7">
+            <div class="expense-table__summary">
+              <span id="table-total-text">합계 0원</span>
+              <span id="table-net-text">순합계 0원</span>
+            </div>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+</main>
+
+<!-- 추가 모달: 새 내역 입력 폼 -->
+<div class="modal hidden" id="add-modal" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal="add"></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="add-modal-title">
+    <div class="modal__header">
+      <div>
+        <p class="modal__eyebrow">Add Expense</p>
+        <h2 id="add-modal-title">내역 추가</h2>
+      </div>
+      <button type="button" class="modal__close" data-close-modal="add" aria-label="추가 모달 닫기">×</button>
+    </div>
+
+    <form id="add-expense-form" class="modal-form">
+      <div class="modal-form__grid">
+        <div class="filter-field">
+          <label for="expense-title">제목</label>
+          <input id="expense-title" name="title" type="text" placeholder="예: 점심 식사">
+        </div>
+
+        <div class="filter-field">
+          <label for="expense-amount">금액</label>
+          <input id="expense-amount" name="amount" type="number" min="0" placeholder="예: 12000">
+        </div>
+
+        <div class="filter-field">
+          <label for="expense-date">날짜</label>
+          <input id="expense-date" name="date" type="date">
+        </div>
+
+        <div class="filter-field">
+          <label for="expense-type">유형</label>
+          <select id="expense-type" name="type"></select>
+        </div>
+
+        <div class="filter-field">
+          <label for="expense-category">카테고리</label>
+          <select id="expense-category" name="category"></select>
+        </div>
+
+        <div class="filter-field">
+          <label for="expense-payment-method">결제수단</label>
+          <select id="expense-payment-method" name="paymentMethod"></select>
+        </div>
+      </div>
+
+      <div class="modal__actions">
+        <button type="button" class="button button-secondary" data-close-modal="add">닫기</button>
+        <button type="submit" class="button button-primary">추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 상세 모달: 선택한 내역의 상세 정보 표시 -->
+<div class="modal hidden" id="detail-modal" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal="detail"></div>
+  <div class="modal__dialog modal__dialog--compact" role="dialog" aria-modal="true"
+       aria-labelledby="detail-modal-title">
+    <div class="modal__header">
+      <div>
+        <p class="modal__eyebrow">Expense Detail</p>
+        <h2 id="detail-modal-title">상세 내역</h2>
+      </div>
+      <button type="button" class="modal__close" data-close-modal="detail" aria-label="상세 모달 닫기">×</button>
+    </div>
+
+    <dl class="detail-list" id="detail-list"></dl>
+  </div>
+</div>
+
+<!-- expenses 기능 엔트리 -->
+<script type="module" src="./features/expenses/index.js"></script>
+</body>
+</html>
