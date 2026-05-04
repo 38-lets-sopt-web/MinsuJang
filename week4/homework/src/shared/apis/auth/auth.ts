@@ -1,11 +1,9 @@
 /**
  * 회원가입
  */
-const signup = () => {
-};
+export const signup = () => {};
 
 /**
  * 로그인
  */
-const login = () => {
-};
+export const login = () => {};

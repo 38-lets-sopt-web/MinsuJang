@@ -1,2 +1,1 @@
-export const IconButton = () => {
-};
+export const IconButton = () => {};

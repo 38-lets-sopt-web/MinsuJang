@@ -1,1 +1,1 @@
-export const PasswordInput = () => <input type="password" />;
+export const PasswordInput = () => <input type='password' />;
