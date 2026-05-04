@@ -1,5 +1,5 @@
 import { Outlet } from '@tanstack/react-router';
-import { AppHeader } from './-components/AppHeader';
+import { AppHeader } from './-components/app-header/AppHeader';
 
 export function UsersLayout() {
   return (

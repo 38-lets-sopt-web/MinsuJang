@@ -5,7 +5,7 @@ import { AsyncBoundary } from '@shared/components/boundary';
 import { useUserDetailQuery } from '@shared/queries';
 import { Header } from '@ui';
 import { cn } from '@shared/utils/cn';
-import { Route as UsersRoute } from '../route';
+import { Route as UsersRoute } from '../../route';
 import * as styles from './AppHeader.css';
 
 type AppHeaderNavProps = {
