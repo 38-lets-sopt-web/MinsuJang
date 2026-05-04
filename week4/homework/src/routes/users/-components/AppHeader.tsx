@@ -1,6 +1,6 @@
 import { Link, useNavigate } from '@tanstack/react-router';
 import { clearStoredUserId } from '@apis/core';
-import { Header } from '@ui/header/Header';
+import { Header } from '@ui';
 
 export function AppHeader() {
   const navigate = useNavigate();

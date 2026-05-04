@@ -15,7 +15,9 @@
       "@apis/*": ["./src/shared/apis/*"],
       "@icons/*": ["./src/shared/assets/icons/*"],
       "@images/*": ["./src/shared/assets/images/*"],
+      "@layout": ["./src/shared/components/layout/index.ts"],
       "@layout/*": ["./src/shared/components/layout/*"],
+      "@ui": ["./src/shared/components/ui/index.ts"],
       "@ui/*": ["./src/shared/components/ui/*"],
       "@shared/*": ["./src/shared/*"],
       "@styles/*": ["./src/shared/styles/*"]
