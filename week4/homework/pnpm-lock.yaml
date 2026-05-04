@@ -13,6 +13,9 @@ importers:
       '@vanilla-extract/recipes':
         specifier: ^0.5.7
         version: 0.5.7(@vanilla-extract/css@1.20.1)
+      ky:
+        specifier: ^2.0.2
+        version: 2.0.2
       react:
         specifier: ^19.2.5
         version: 19.2.5
@@ -1516,6 +1519,13 @@ packages:
         integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==,
       }
 
+  ky@2.0.2:
+    resolution:
+      {
+        integrity: sha512-/GmXpo9F9W+f8n4Ivr2iH+7h7wL7jLbLKWkMlpflcCRb6kGjBfTlASEXaZ9qUgNTn4VgS0P2pwxxzQ4EM6Ulgg==,
+      }
+    engines: { node: '>=22' }
+
   levn@0.4.1:
     resolution:
       {
@@ -2903,6 +2913,8 @@ snapshots:
   keyv@4.5.4:
     dependencies:
       json-buffer: 3.0.1
+
+  ky@2.0.2: {}
 
   levn@0.4.1:
     dependencies:
