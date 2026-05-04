@@ -1,9 +1,8 @@
 import type { SubmitEvent } from 'react';
 import { AsyncBoundary } from '@shared/components/boundary';
 import { useUserDetailQuery } from '@shared/queries';
-import { Button, Input } from '@ui';
+import { Button, InfoCard, Input } from '@ui';
 import { useUserSearch } from '../../-hooks/useUserSearch';
-import { UserInfoCard } from '../user-info-card/UserInfoCard';
 import * as styles from './UserSearchSection.css';
 
 type UserSearchResultProps = {
@@ -25,7 +24,17 @@ const UserSearchResult = ({ userId }: UserSearchResultProps) => {
 const UserSearchResultContent = ({ userId }: { userId: number }) => {
   const { data: user } = useUserDetailQuery(userId);
 
-  return <UserInfoCard user={user} />;
+  return (
+    <InfoCard
+      items={[
+        { label: '아이디', value: user.loginId },
+        { label: '이름', value: user.name },
+        { label: '이메일', value: user.email },
+        { label: '나이', value: user.age },
+        { label: '파트', value: user.part },
+      ]}
+    />
+  );
 };
 
 export const UserSearchSection = () => {
