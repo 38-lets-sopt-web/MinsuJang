@@ -4,12 +4,23 @@ import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import babel from '@rolldown/plugin-babel';
 import { fileURLToPath, URL } from 'node:url';
 
+const resolveSrc = (path: string) => fileURLToPath(new URL(`./src/${path}`, import.meta.url));
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vanillaExtractPlugin(), react(), babel({ presets: [reactCompilerPreset()] })],
   resolve: {
     alias: {
-      '@styles': fileURLToPath(new URL('./src/shared/styles', import.meta.url)),
+      '@apps': resolveSrc('apps'),
+      '@auth': resolveSrc('pages/auth'),
+      '@users': resolveSrc('pages/users'),
+      '@apis': resolveSrc('shared/apis'),
+      '@icons': resolveSrc('shared/assets/icons'),
+      '@images': resolveSrc('shared/assets/images'),
+      '@layout': resolveSrc('shared/components/layout'),
+      '@ui': resolveSrc('shared/components/ui'),
+      '@shared': resolveSrc('shared'),
+      '@styles': resolveSrc('shared/styles'),
     },
   },
 });
