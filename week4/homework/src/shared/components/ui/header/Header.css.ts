@@ -55,6 +55,10 @@ export const navItem = style({
 export const navButton = style([
   navItem,
   {
+    border: 0,
+    background: 'transparent',
+    padding: 0,
+    font: 'inherit',
     cursor: 'pointer',
   },
 ]);

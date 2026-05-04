@@ -11,14 +11,12 @@ type HeaderLinkProps = ComponentPropsWithoutRef<'a'> & {
 };
 type HeaderButtonProps = ComponentPropsWithoutRef<'button'>;
 
-type HeaderBrandProps = {
+type HeaderBrandProps = ComponentPropsWithoutRef<'div'> & {
   title: string;
   description?: string;
 };
 
-type HeaderNavProps = {
-  children: ReactNode;
-};
+type HeaderNavProps = ComponentPropsWithoutRef<'nav'>;
 
 function HeaderRoot({ children, className, ...props }: HeaderProps) {
   return (
@@ -28,17 +26,17 @@ function HeaderRoot({ children, className, ...props }: HeaderProps) {
   );
 }
 
-function HeaderBrand({ title, description }: HeaderBrandProps) {
+function HeaderBrand({ title, description, className, ...props }: HeaderBrandProps) {
   return (
-    <div className={styles.brand}>
+    <div className={cn(styles.brand, className)} {...props}>
       <strong className={styles.title}>{title}</strong>
       {description ? <p className={styles.description}>{description}</p> : null}
     </div>
   );
 }
 
-function HeaderNav({ children }: HeaderNavProps) {
-  return <nav className={styles.nav}>{children}</nav>;
+function HeaderNav({ className, ...props }: HeaderNavProps) {
+  return <nav className={cn(styles.nav, className)} {...props} />;
 }
 
 function HeaderLink({ className, ...props }: HeaderLinkProps) {
