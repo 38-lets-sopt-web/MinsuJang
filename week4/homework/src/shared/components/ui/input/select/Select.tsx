@@ -2,50 +2,57 @@ import { forwardRef, useId } from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
 import { Field } from '@ui/field';
 import { cn } from '@shared/utils/cn';
-import * as styles from './Input.css';
+import * as inputStyles from '../base/Input.css';
+import * as styles from './Select.css';
 
-type InputProps = ComponentPropsWithoutRef<'input'> & {
+type SelectProps = ComponentPropsWithoutRef<'select'> & {
   label?: string;
   helperText?: string;
   errorMessage?: string;
   fullWidth?: boolean;
 };
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
       id,
-      type = 'text',
       label,
       helperText,
       errorMessage,
       fullWidth = true,
       className,
+      children,
       'aria-describedby': ariaDescribedBy,
       ...props
     },
     ref,
   ) => {
     const generatedId = useId();
-    const inputId = id ?? generatedId;
-    const messageId = `${inputId}-message`;
+    const selectId = id ?? generatedId;
+    const messageId = `${selectId}-message`;
     const hasMessage = Boolean(helperText || errorMessage);
     const hasError = Boolean(errorMessage);
     const describedBy = cn(ariaDescribedBy, hasMessage && messageId) || undefined;
 
     return (
-      <Field className={cn(styles.root, fullWidth && styles.fullWidth)}>
-        {label ? <Field.Label htmlFor={inputId}>{label}</Field.Label> : null}
+      <Field className={cn(inputStyles.root, fullWidth && inputStyles.fullWidth)}>
+        {label ? <Field.Label htmlFor={selectId}>{label}</Field.Label> : null}
         <Field.Control>
-          <input
+          <select
             ref={ref}
-            id={inputId}
-            type={type}
-            className={cn(styles.input, hasError && styles.error, className)}
+            id={selectId}
+            className={cn(
+              inputStyles.input,
+              styles.select,
+              hasError && inputStyles.error,
+              className,
+            )}
             aria-invalid={hasError || undefined}
             aria-describedby={describedBy}
             {...props}
-          />
+          >
+            {children}
+          </select>
         </Field.Control>
         <Field.Message
           id={hasMessage ? messageId : undefined}
@@ -57,4 +64,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   },
 );
 
-Input.displayName = 'Input';
+Select.displayName = 'Select';
