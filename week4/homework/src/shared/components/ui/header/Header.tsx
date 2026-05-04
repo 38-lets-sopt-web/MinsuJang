@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { cloneElement, isValidElement } from 'react';
 import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
+import { cn } from '@shared/utils/cn';
 import * as styles from './Header.css';
 
 type HeaderProps = ComponentPropsWithoutRef<'header'>;
@@ -20,10 +21,8 @@ type HeaderNavProps = {
 };
 
 function HeaderRoot({ children, className, ...props }: HeaderProps) {
-  const rootClassName = className ? `${styles.root} ${className}` : styles.root;
-
   return (
-    <header className={rootClassName} {...props}>
+    <header className={cn(styles.root, className)} {...props}>
       <div className={styles.inner}>{children}</div>
     </header>
   );
@@ -44,16 +43,13 @@ function HeaderNav({ children }: HeaderNavProps) {
 
 function HeaderLink({ className, ...props }: HeaderLinkProps) {
   const { asChild, children, ...linkProps } = props;
-  const linkClassName = className ? `${styles.navItem} ${className}` : styles.navItem;
+  const linkClassName = cn(styles.navItem, className);
 
   if (asChild && isValidElement(children)) {
     const child = children as ReactElement<{ className?: string }>;
-    const childClassName = child.props.className
-      ? `${linkClassName} ${child.props.className}`
-      : linkClassName;
 
     return cloneElement(child, {
-      className: childClassName,
+      className: cn(linkClassName, child.props.className),
     });
   }
 
@@ -65,9 +61,7 @@ function HeaderLink({ className, ...props }: HeaderLinkProps) {
 }
 
 function HeaderButton({ className, ...props }: HeaderButtonProps) {
-  const buttonClassName = className ? `${styles.navButton} ${className}` : styles.navButton;
-
-  return <button className={buttonClassName} {...props} />;
+  return <button className={cn(styles.navButton, className)} {...props} />;
 }
 
 export const Header = Object.assign(HeaderRoot, {
