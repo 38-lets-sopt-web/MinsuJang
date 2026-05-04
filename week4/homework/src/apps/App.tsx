@@ -1,7 +1,8 @@
 import '@styles/global.css';
+import { TanStackRouterProvider } from './providers/TanStackRouterProvider';
 
 function App() {
-  return <div>hello</div>;
+  return <TanStackRouterProvider />;
 }
 
 export default App;

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import babel from '@rolldown/plugin-babel';
 import { fileURLToPath, URL } from 'node:url';
@@ -8,12 +9,18 @@ const resolveSrc = (path: string) => fileURLToPath(new URL(`./src/${path}`, impo
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vanillaExtractPlugin(), react(), babel({ presets: [reactCompilerPreset()] })],
+  plugins: [
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+    }),
+    vanillaExtractPlugin(),
+    react(),
+    babel({ presets: [reactCompilerPreset()] }),
+  ],
   resolve: {
     alias: {
       '@apps': resolveSrc('apps'),
-      '@auth': resolveSrc('pages/auth'),
-      '@users': resolveSrc('pages/users'),
       '@apis': resolveSrc('shared/apis'),
       '@icons': resolveSrc('shared/assets/icons'),
       '@images': resolveSrc('shared/assets/images'),
