@@ -12,6 +12,7 @@ type SignUpLoginIdStepProps = SignUpStepProps & {
 export const SignUpLoginIdStep = ({
   register,
   errors,
+  errorMessages,
   disabled = false,
   canGoNext,
   onNext,
@@ -22,7 +23,7 @@ export const SignUpLoginIdStep = ({
         <Input
           label='아이디'
           placeholder='아이디를 입력해주세요.'
-          errorMessage={errors.loginId?.message}
+          errorMessage={errorMessages.loginId ?? errors.loginId?.message}
           disabled={disabled}
           {...register('loginId')}
         />

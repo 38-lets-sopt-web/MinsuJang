@@ -13,6 +13,7 @@ export const SignUpFunnel = () => {
         <SignUpLoginIdStep
           register={field.register}
           errors={field.errors}
+          errorMessages={field.errorMessages}
           disabled={submission.isPending}
           canGoNext={funnel.canGoPasswordStep}
           onNext={funnel.goPasswordStep}
@@ -22,6 +23,7 @@ export const SignUpFunnel = () => {
         <SignUpPasswordStep
           register={field.register}
           errors={field.errors}
+          errorMessages={field.errorMessages}
           disabled={submission.isPending}
           canGoNext={funnel.canGoProfileStep}
           onPrev={funnel.goPrev}
@@ -32,6 +34,7 @@ export const SignUpFunnel = () => {
         <SignUpProfileStep
           register={field.register}
           errors={field.errors}
+          errorMessages={field.errorMessages}
           disabled={submission.isPending}
           canSubmit={funnel.canSubmit}
           isSubmitting={submission.isPending}

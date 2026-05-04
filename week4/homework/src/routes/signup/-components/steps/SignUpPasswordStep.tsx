@@ -13,6 +13,7 @@ type SignUpPasswordStepProps = SignUpStepProps & {
 export const SignUpPasswordStep = ({
   register,
   errors,
+  errorMessages,
   disabled = false,
   canGoNext,
   onPrev,
@@ -24,14 +25,14 @@ export const SignUpPasswordStep = ({
         <PasswordInput
           label='비밀번호'
           placeholder='비밀번호를 입력해주세요.'
-          errorMessage={errors.password?.message}
+          errorMessage={errorMessages.password ?? errors.password?.message}
           disabled={disabled}
           {...register('password')}
         />
         <PasswordInput
           label='비밀번호 확인'
           placeholder='비밀번호를 한 번 더 입력해주세요.'
-          errorMessage={errors.passwordConfirm?.message}
+          errorMessage={errorMessages.passwordConfirm ?? errors.passwordConfirm?.message}
           disabled={disabled}
           {...register('passwordConfirm')}
         />

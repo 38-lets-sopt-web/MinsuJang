@@ -15,6 +15,7 @@ type SignUpProfileStepProps = SignUpStepProps & {
 export const SignUpProfileStep = ({
   register,
   errors,
+  errorMessages,
   disabled = false,
   canSubmit,
   isSubmitting,
@@ -27,14 +28,14 @@ export const SignUpProfileStep = ({
         <Input
           label='이름'
           placeholder='이름을 입력해주세요.'
-          errorMessage={errors.name?.message}
+          errorMessage={errorMessages.name ?? errors.name?.message}
           disabled={disabled}
           {...register('name')}
         />
         <Input
           label='이메일'
           placeholder='이메일을 입력해주세요.'
-          errorMessage={errors.email?.message}
+          errorMessage={errorMessages.email ?? errors.email?.message}
           disabled={disabled}
           {...register('email')}
         />
@@ -42,13 +43,13 @@ export const SignUpProfileStep = ({
           label='나이'
           placeholder='나이를 입력해주세요.'
           inputMode='numeric'
-          errorMessage={errors.age?.message}
+          errorMessage={errorMessages.age ?? errors.age?.message}
           disabled={disabled}
           {...register('age')}
         />
         <Select
           label='파트'
-          errorMessage={errors.part?.message}
+          errorMessage={errorMessages.part ?? errors.part?.message}
           disabled={disabled}
           {...register('part')}
         >
