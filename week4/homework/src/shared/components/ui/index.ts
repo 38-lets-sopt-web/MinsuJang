@@ -3,6 +3,7 @@ export { IconButton } from './button/icon/IconButton';
 export { Card } from './card';
 export { Field } from './field';
 export { Header } from './header/Header';
+export { InfoCard } from './info-card';
 export { Input } from './input/base/Input';
 export { PasswordInput } from './input/password/PasswordInput';
 export { Select } from './input/select/Select';
