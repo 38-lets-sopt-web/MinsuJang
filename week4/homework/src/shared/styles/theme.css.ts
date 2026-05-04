@@ -21,6 +21,9 @@ export const vars = createGlobalTheme(':root', {
     buttonDangerBg: primitiveTokens.color.red300,
     buttonNeutralBg: primitiveTokens.color.sky200,
     buttonText: primitiveTokens.color.navy900,
+    headerBg: primitiveTokens.color.blue950,
+    headerText: primitiveTokens.color.white,
+    headerSubText: primitiveTokens.color.sky100,
   },
   space: {
     xs: primitiveTokens.space[8],

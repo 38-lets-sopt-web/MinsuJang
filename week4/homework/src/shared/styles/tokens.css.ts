@@ -12,6 +12,7 @@ export const primitiveTokens = {
     navy700: '#234b72',
     navy800: '#173f67',
     navy900: '#14375b',
+    blue950: '#143556',
     green500: '#57c829',
     red300: '#f5bcc1',
     red500: '#ff7f7f',
