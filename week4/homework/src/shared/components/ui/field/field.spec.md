@@ -46,7 +46,8 @@
   - `errorMessage?: string`
   - `id?: string`
 - `errorMessage`가 있으면 helper text보다 우선 표시한다.
-- `helperText`와 `errorMessage`가 모두 없으면 렌더링하지 않는다.
+- `helperText`와 `errorMessage`가 모두 없어도 message 영역의 높이는 유지한다.
+- message 영역을 유지해 validation message 표시 여부에 따른 input layout shift를 방지한다.
 - error message가 표시될 때는 error 스타일을 적용한다.
 
 ## 접근성
@@ -63,6 +64,7 @@
 - label은 읽기 쉬운 굵기와 크기를 가진다.
 - helper text는 보조 색상을 사용한다.
 - error message는 danger color를 사용한다.
+- message는 최소 한 줄 높이를 확보한다.
 - Field는 control 자체의 border, height, padding을 정의하지 않는다. control 스타일은 각 입력 컴포넌트가 담당한다.
 
 ## 구현 기준

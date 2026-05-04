@@ -24,6 +24,7 @@ export const control = style({
 
 export const message = style({
   margin: 0,
+  minHeight: `calc(${vars.font.labelMd} * ${vars.font.lineHeightNormal})`,
   color: vars.color.textSecondary,
   fontSize: vars.font.labelMd,
   fontWeight: vars.font.weightMedium,

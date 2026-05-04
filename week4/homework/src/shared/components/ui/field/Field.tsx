@@ -34,17 +34,14 @@ function FieldControl({ className, children, ...props }: FieldControlProps) {
 function FieldMessage({ className, helperText, errorMessage, ...props }: FieldMessageProps) {
   const message: ReactNode = errorMessage ?? helperText;
 
-  if (!message) {
-    return null;
-  }
-
   return (
     <p
       className={cn(styles.message, errorMessage && styles.errorMessage, className)}
       role={errorMessage ? 'alert' : undefined}
+      aria-hidden={message ? undefined : true}
       {...props}
     >
-      {message}
+      {message ?? ' '}
     </p>
   );
 }
