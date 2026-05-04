@@ -25,5 +25,20 @@ export class ApiError extends Error {
 }
 
 export function isApiError(error: unknown): error is ApiError {
-  return error instanceof ApiError;
+  if (error instanceof ApiError) {
+    return true;
+  }
+
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'name' in error &&
+    'message' in error &&
+    'status' in error &&
+    'code' in error &&
+    error.name === 'ApiError' &&
+    typeof error.message === 'string' &&
+    typeof error.status === 'number' &&
+    typeof error.code === 'string'
+  );
 }
