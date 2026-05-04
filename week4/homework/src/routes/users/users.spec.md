@@ -25,7 +25,7 @@ UsersPage
     userId Input
     search Button
   UserSearchResult
-    empty state 또는 UserInfoCard
+    empty state 또는 InfoCard
   UserListSection
     UserCard[]
 ```
@@ -47,10 +47,11 @@ UsersPage
 - 검색 전에는 안내 문구를 표시한다.
 - 검색 성공 시 상세 정보 카드를 표시한다.
 
-### UserInfoCard
+### InfoCard
 
 - 유저 상세 정보를 읽기 전용으로 표시한다.
 - 표시 필드: 아이디, 이름, 이메일, 나이, 파트
+- `shared/components/ui`의 공통 컴포넌트를 사용한다.
 
 ### UserListSection
 
@@ -81,4 +82,3 @@ UsersPage
 - 검색 결과 카드는 label/value 2열 정보 형태로 표시한다.
 - 전체 멤버 리스트는 grid로 표시한다.
 - 카드 클릭 가능 영역은 hover/focus-visible 상태를 제공한다.
-
