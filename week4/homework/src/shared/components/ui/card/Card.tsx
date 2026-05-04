@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
 import { cn } from '@shared/utils/cn';
-import * as styles from './Card.css';
+import * as S from './Card.css';
 
 type CardElement = 'div' | 'button' | 'a';
 type CardProps = {
@@ -16,17 +16,15 @@ function CardRoot({ as = 'div', variant = 'default', className, ...props }: Card
   const Component = as as ElementType;
   const buttonProps = as === 'button' ? { type: 'button' as const } : {};
 
-  return (
-    <Component className={cn(styles.root({ variant }), className)} {...buttonProps} {...props} />
-  );
+  return <Component className={cn(S.root({ variant }), className)} {...buttonProps} {...props} />;
 }
 
 function CardTitle({ className, ...props }: CardTitleProps) {
-  return <strong className={cn(styles.title(), className)} {...props} />;
+  return <strong className={cn(S.title(), className)} {...props} />;
 }
 
 function CardBadge({ className, ...props }: CardBadgeProps) {
-  return <span className={cn(styles.badge(), className)} {...props} />;
+  return <span className={cn(S.badge(), className)} {...props} />;
 }
 
 export const Card = Object.assign(CardRoot, {

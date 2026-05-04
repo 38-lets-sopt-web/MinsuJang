@@ -1,10 +1,10 @@
 import { SignUpFunnel } from './-components/funnel';
-import * as styles from './-SignUpPage.css';
+import * as S from './-SignUpPage.css';
 
 export const SignUpPage = () => {
   return (
-    <main className={styles.page}>
-      <div className={styles.content}>
+    <main className={S.page}>
+      <div className={S.content}>
         <SignUpFunnel />
       </div>
     </main>

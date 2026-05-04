@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { Form } from '@layout';
 import { Button, PasswordInput } from '@ui';
-import * as styles from '../funnel/SignUpFunnel.css';
+import * as S from '../funnel/SignUpFunnel.css';
 import type { SignUpStepProps } from './SignUpStep.types';
 
 type SignUpPasswordStepProps = SignUpStepProps & {
@@ -37,8 +37,8 @@ export const SignUpPasswordStep = ({
           {...register('passwordConfirm')}
         />
       </Form.Body>
-      <Form.Actions className={styles.actions}>
-        <div className={styles.buttonGroup}>
+      <Form.Actions className={S.actions}>
+        <div className={S.buttonGroup}>
           <Button type='button' variant='neutral' fullWidth disabled={disabled} onClick={onPrev}>
             이전
           </Button>
@@ -46,7 +46,7 @@ export const SignUpPasswordStep = ({
             다음
           </Button>
         </div>
-        <Link className={styles.loginLink} to='/signin'>
+        <Link className={S.loginLink} to='/signin'>
           로그인
         </Link>
       </Form.Actions>

@@ -1,7 +1,7 @@
 import { Button, Input } from '@ui';
 import type { User } from '@apis/users/users.types';
 import { useMyInfoForm } from '../-hooks/useMyInfoForm';
-import * as styles from './MyInfoForm.css';
+import * as S from './MyInfoForm.css';
 
 type MyInfoFormProps = {
   user: User;
@@ -11,7 +11,7 @@ export const MyInfoForm = ({ user }: MyInfoFormProps) => {
   const { field, submission } = useMyInfoForm({ user });
 
   return (
-    <form className={styles.root} onSubmit={submission.submit}>
+    <form className={S.root} onSubmit={submission.submit}>
       <Input
         label='이름'
         placeholder='이름을 입력해주세요.'

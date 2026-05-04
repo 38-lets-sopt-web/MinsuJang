@@ -7,7 +7,7 @@ import { getErrorMessage } from '@apis/core';
 import { useLoginMutation } from '@shared/queries';
 import { signInSchema } from '../-schemas/signInSchema';
 import type { SignInFormValues } from '../-schemas/signInSchema';
-import * as styles from './SignInForm.css';
+import * as S from './SignInForm.css';
 
 export const SignInForm = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ export const SignInForm = () => {
   };
 
   return (
-    <Form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <Form className={S.form} onSubmit={handleSubmit(onSubmit)}>
       <Form.Header title='SOPT MEMBERS' />
       <Form.Body>
         <Input
@@ -54,8 +54,8 @@ export const SignInForm = () => {
           {...register('password')}
         />
       </Form.Body>
-      <Form.Actions className={styles.actions}>
-        <p className={styles.errorMessage} aria-hidden={loginErrorMessage ? undefined : true}>
+      <Form.Actions className={S.actions}>
+        <p className={S.errorMessage} aria-hidden={loginErrorMessage ? undefined : true}>
           {loginErrorMessage ?? ' '}
         </p>
         <Button
@@ -67,7 +67,7 @@ export const SignInForm = () => {
         >
           로그인
         </Button>
-        <Link className={styles.signUpLink} to='/signup'>
+        <Link className={S.signUpLink} to='/signup'>
           회원가입
         </Link>
       </Form.Actions>

@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 import { Field } from '@ui/field';
 import { cn } from '@shared/utils/cn';
 import * as inputStyles from '../base/Input.css';
-import * as styles from './Select.css';
+import * as S from './Select.css';
 
 type SelectProps = ComponentPropsWithoutRef<'select'> & {
   label?: string;
@@ -41,12 +41,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <select
             ref={ref}
             id={selectId}
-            className={cn(
-              inputStyles.input,
-              styles.select,
-              hasError && inputStyles.error,
-              className,
-            )}
+            className={cn(inputStyles.input, S.select, hasError && inputStyles.error, className)}
             aria-invalid={hasError || undefined}
             aria-describedby={describedBy}
             {...props}

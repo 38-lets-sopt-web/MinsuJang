@@ -6,7 +6,7 @@ import { useUserDetailQuery } from '@shared/queries';
 import { Header } from '@ui';
 import { cn } from '@shared/utils/cn';
 import { Route as UsersRoute } from '../../route';
-import * as styles from './AppHeader.css';
+import * as S from './AppHeader.css';
 
 type AppHeaderNavProps = {
   isMenuOpen: boolean;
@@ -24,21 +24,21 @@ const AppHeaderNav = ({
   return (
     <Header.Nav
       id='app-header-nav'
-      className={cn(styles.nav, isMenuOpen ? styles.navOpen : styles.navClosed)}
+      className={cn(S.nav, isMenuOpen ? S.navOpen : S.navClosed)}
       aria-label='마이페이지 메뉴'
     >
-      <Header.Link className={styles.navItem} asChild>
+      <Header.Link className={S.navItem} asChild>
         <Link to='/users/my' onClick={onCloseMenu}>
           내 정보
         </Link>
       </Header.Link>
-      <Header.Link className={styles.navItem} asChild>
+      <Header.Link className={S.navItem} asChild>
         <Link to='/users' onClick={onCloseMenu}>
           회원 조회
         </Link>
       </Header.Link>
       <Header.Button
-        className={styles.navItem}
+        className={S.navItem}
         type='button'
         disabled={isLogoutDisabled}
         onClick={onLogout}
@@ -57,14 +57,14 @@ type AppHeaderMenuButtonProps = {
 const AppHeaderMenuButton = ({ isMenuOpen, onClick }: AppHeaderMenuButtonProps) => {
   return (
     <Header.Button
-      className={styles.menuButton}
+      className={S.menuButton}
       type='button'
       aria-label={isMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
       aria-controls='app-header-nav'
       aria-expanded={isMenuOpen}
       onClick={onClick}
     >
-      <span className={cn(styles.menuIcon, isMenuOpen && styles.menuIconOpen)} />
+      <span className={cn(S.menuIcon, isMenuOpen && S.menuIconOpen)} />
     </Header.Button>
   );
 };
@@ -77,7 +77,7 @@ const AppHeaderFallback = () => {
   };
 
   return (
-    <Header className={styles.root}>
+    <Header className={S.root}>
       <Header.Brand title='SOPT MEMBERS' description='불러오는 중입니다.' />
       <AppHeaderMenuButton
         isMenuOpen={isMenuOpen}
@@ -112,7 +112,7 @@ const AppHeaderContent = () => {
   };
 
   return (
-    <Header className={styles.root}>
+    <Header className={S.root}>
       <Header.Brand title='SOPT MEMBERS' description={`안녕하세요, ${user.name}님!`} />
       <AppHeaderMenuButton
         isMenuOpen={isMenuOpen}

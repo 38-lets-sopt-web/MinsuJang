@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { Form } from '@layout';
 import { Button, Input, Select } from '@ui';
 import { PART_OPTIONS } from '../../-constants/signUpSteps';
-import * as styles from '../funnel/SignUpFunnel.css';
+import * as S from '../funnel/SignUpFunnel.css';
 import type { SignUpStepProps } from './SignUpStep.types';
 
 type SignUpProfileStepProps = SignUpStepProps & {
@@ -61,11 +61,11 @@ export const SignUpProfileStep = ({
           ))}
         </Select>
       </Form.Body>
-      <Form.Actions className={styles.actions}>
-        <p className={styles.errorMessage} aria-hidden={submitErrorMessage ? undefined : true}>
+      <Form.Actions className={S.actions}>
+        <p className={S.errorMessage} aria-hidden={submitErrorMessage ? undefined : true}>
           {submitErrorMessage ?? ' '}
         </p>
-        <div className={styles.buttonGroup}>
+        <div className={S.buttonGroup}>
           <Button
             type='button'
             variant='neutral'
@@ -85,7 +85,7 @@ export const SignUpProfileStep = ({
             회원가입
           </Button>
         </div>
-        <Link className={styles.loginLink} to='/signin'>
+        <Link className={S.loginLink} to='/signin'>
           로그인
         </Link>
       </Form.Actions>

@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '@shared/utils/cn';
-import * as styles from './Field.css';
+import * as S from './Field.css';
 
 type FieldProps = ComponentPropsWithoutRef<'div'>;
 type FieldLabelProps = ComponentPropsWithoutRef<'label'>;
@@ -13,19 +13,19 @@ type FieldMessageProps = ComponentPropsWithoutRef<'p'> & {
 
 function FieldRoot({ children, className, ...props }: FieldProps) {
   return (
-    <div className={cn(styles.root, className)} {...props}>
+    <div className={cn(S.root, className)} {...props}>
       {children}
     </div>
   );
 }
 
 function FieldLabel({ className, ...props }: FieldLabelProps) {
-  return <label className={cn(styles.label, className)} {...props} />;
+  return <label className={cn(S.label, className)} {...props} />;
 }
 
 function FieldControl({ className, children, ...props }: FieldControlProps) {
   return (
-    <div className={cn(styles.control, className)} {...props}>
+    <div className={cn(S.control, className)} {...props}>
       {children}
     </div>
   );
@@ -36,7 +36,7 @@ function FieldMessage({ className, helperText, errorMessage, ...props }: FieldMe
 
   return (
     <p
-      className={cn(styles.message, errorMessage && styles.errorMessage, className)}
+      className={cn(S.message, errorMessage && S.errorMessage, className)}
       role={errorMessage ? 'alert' : undefined}
       aria-hidden={message ? undefined : true}
       {...props}

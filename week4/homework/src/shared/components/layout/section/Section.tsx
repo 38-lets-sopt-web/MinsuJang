@@ -2,7 +2,7 @@
 import { forwardRef } from 'react';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '@shared/utils/cn';
-import * as styles from './Section.css';
+import * as S from './Section.css';
 
 type SectionProps = ComponentPropsWithoutRef<'section'>;
 type SectionHeaderProps = ComponentPropsWithoutRef<'header'> & {
@@ -14,22 +14,22 @@ type SectionBodyProps = ComponentPropsWithoutRef<'div'> & {
 };
 
 const SectionRoot = forwardRef<HTMLElement, SectionProps>(({ className, ...props }, ref) => {
-  return <section ref={ref} className={cn(styles.root, className)} {...props} />;
+  return <section ref={ref} className={cn(S.root, className)} {...props} />;
 });
 
 SectionRoot.displayName = 'Section';
 
 function SectionHeader({ title, description, className, ...props }: SectionHeaderProps) {
   return (
-    <header className={cn(styles.header, className)} {...props}>
-      <h2 className={styles.title}>{title}</h2>
-      {description ? <p className={styles.description}>{description}</p> : null}
+    <header className={cn(S.header, className)} {...props}>
+      <h2 className={S.title}>{title}</h2>
+      {description ? <p className={S.description}>{description}</p> : null}
     </header>
   );
 }
 
 function SectionBody({ className, ...props }: SectionBodyProps) {
-  return <div className={cn(styles.body, className)} {...props} />;
+  return <div className={cn(S.body, className)} {...props} />;
 }
 
 export const Section = Object.assign(SectionRoot, {

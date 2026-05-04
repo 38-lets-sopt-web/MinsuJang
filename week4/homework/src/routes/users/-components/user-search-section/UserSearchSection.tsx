@@ -3,7 +3,7 @@ import { AsyncBoundary } from '@shared/components/boundary';
 import { useUserDetailQuery } from '@shared/queries';
 import { Button, InfoCard, Input } from '@ui';
 import { useUserSearch } from '../../-hooks/useUserSearch';
-import * as styles from './UserSearchSection.css';
+import * as S from './UserSearchSection.css';
 
 type UserSearchResultProps = {
   userId: number | null;
@@ -11,7 +11,7 @@ type UserSearchResultProps = {
 
 const UserSearchResult = ({ userId }: UserSearchResultProps) => {
   if (!userId) {
-    return <div className={styles.emptyResult}>원하는 ID를 검색해 보세요! 🔍</div>;
+    return <div className={S.emptyResult}>원하는 ID를 검색해 보세요! 🔍</div>;
   }
 
   return (
@@ -46,8 +46,8 @@ export const UserSearchSection = () => {
   };
 
   return (
-    <section className={styles.root}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+    <section className={S.root}>
+      <form className={S.form} onSubmit={handleSubmit}>
         <Input
           label='회원 ID'
           placeholder='회원 ID를 입력해주세요.'
@@ -61,8 +61,8 @@ export const UserSearchSection = () => {
           검색
         </Button>
       </form>
-      <div className={styles.result}>
-        <h2 className={styles.resultTitle}>검색 결과</h2>
+      <div className={S.result}>
+        <h2 className={S.resultTitle}>검색 결과</h2>
         <UserSearchResult userId={state.searchedUserId} />
       </div>
     </section>

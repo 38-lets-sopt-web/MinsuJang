@@ -2,7 +2,7 @@
 import { forwardRef } from 'react';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '@shared/utils/cn';
-import * as styles from './Form.css';
+import * as S from './Form.css';
 
 type FormProps = ComponentPropsWithoutRef<'form'>;
 type FormHeaderProps = ComponentPropsWithoutRef<'header'> & {
@@ -17,26 +17,26 @@ type FormActionsProps = ComponentPropsWithoutRef<'div'> & {
 };
 
 const FormRoot = forwardRef<HTMLFormElement, FormProps>(({ className, ...props }, ref) => {
-  return <form ref={ref} className={cn(styles.root, className)} {...props} />;
+  return <form ref={ref} className={cn(S.root, className)} {...props} />;
 });
 
 FormRoot.displayName = 'Form';
 
 function FormHeader({ title, description, className, ...props }: FormHeaderProps) {
   return (
-    <header className={cn(styles.header, className)} {...props}>
-      <h1 className={styles.title}>{title}</h1>
-      {description ? <p className={styles.description}>{description}</p> : null}
+    <header className={cn(S.header, className)} {...props}>
+      <h1 className={S.title}>{title}</h1>
+      {description ? <p className={S.description}>{description}</p> : null}
     </header>
   );
 }
 
 function FormBody({ className, ...props }: FormBodyProps) {
-  return <div className={cn(styles.body, className)} {...props} />;
+  return <div className={cn(S.body, className)} {...props} />;
 }
 
 function FormActions({ className, ...props }: FormActionsProps) {
-  return <div className={cn(styles.actions, className)} {...props} />;
+  return <div className={cn(S.actions, className)} {...props} />;
 }
 
 export const Form = Object.assign(FormRoot, {

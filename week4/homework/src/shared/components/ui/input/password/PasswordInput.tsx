@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 import { Field } from '@ui/field';
 import { cn } from '@shared/utils/cn';
 import * as inputStyles from '../base/Input.css';
-import * as styles from './PasswordInput.css';
+import * as S from './PasswordInput.css';
 
 type PasswordInputProps = Omit<ComponentPropsWithoutRef<'input'>, 'type'> & {
   label?: string;
@@ -16,7 +16,7 @@ type PasswordInputProps = Omit<ComponentPropsWithoutRef<'input'>, 'type'> & {
 
 function EyeIcon() {
   return (
-    <svg className={styles.icon} viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+    <svg className={S.icon} viewBox='0 0 24 24' fill='none' aria-hidden='true'>
       <path
         d='M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z'
         stroke='currentColor'
@@ -31,7 +31,7 @@ function EyeIcon() {
 
 function EyeOffIcon() {
   return (
-    <svg className={styles.icon} viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+    <svg className={S.icon} viewBox='0 0 24 24' fill='none' aria-hidden='true'>
       <path
         d='M3 3l18 18'
         stroke='currentColor'
@@ -87,12 +87,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             ref={ref}
             id={inputId}
             type={isPasswordVisible ? 'text' : 'password'}
-            className={cn(
-              inputStyles.input,
-              styles.input,
-              hasError && inputStyles.error,
-              className,
-            )}
+            className={cn(inputStyles.input, S.input, hasError && inputStyles.error, className)}
             aria-invalid={hasError || undefined}
             aria-describedby={describedBy}
             disabled={disabled}
@@ -100,7 +95,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           />
           <button
             type='button'
-            className={styles.toggle}
+            className={S.toggle}
             aria-label={isPasswordVisible ? hidePasswordLabel : showPasswordLabel}
             aria-pressed={isPasswordVisible}
             disabled={disabled}

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '@shared/utils/cn';
-import * as styles from './InfoCard.css';
+import * as S from './InfoCard.css';
 
 type InfoCardItem = {
   label: string;
@@ -14,11 +14,11 @@ type InfoCardProps = Omit<ComponentPropsWithoutRef<'dl'>, 'children'> & {
 
 export const InfoCard = ({ items, className, ...props }: InfoCardProps) => {
   return (
-    <dl className={cn(styles.root, className)} {...props}>
+    <dl className={cn(S.root, className)} {...props}>
       {items.map(({ label, value }) => (
         <Fragment key={label}>
-          <dt className={styles.label}>{label}</dt>
-          <dd className={styles.value}>{value}</dd>
+          <dt className={S.label}>{label}</dt>
+          <dd className={S.value}>{value}</dd>
         </Fragment>
       ))}
     </dl>

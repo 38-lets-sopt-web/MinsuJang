@@ -3,17 +3,17 @@ import { AsyncBoundary } from '@shared/components/boundary';
 import { useUserDetailQuery } from '@shared/queries';
 import { InfoCard } from '@ui';
 import { Route } from './route';
-import * as styles from './-UsersDetailPage.css';
+import * as S from './-UsersDetailPage.css';
 
 const UsersDetailPageContent = () => {
   const { userId } = Route.useParams();
   const { data: user } = useUserDetailQuery(Number(userId));
 
   return (
-    <main className={styles.page}>
-      <section className={styles.content}>
-        <h1 className={styles.title}>상세 정보</h1>
-        <Link className={styles.backLink} to='/users'>
+    <main className={S.page}>
+      <section className={S.content}>
+        <h1 className={S.title}>상세 정보</h1>
+        <Link className={S.backLink} to='/users'>
           뒤로가기
         </Link>
         <InfoCard

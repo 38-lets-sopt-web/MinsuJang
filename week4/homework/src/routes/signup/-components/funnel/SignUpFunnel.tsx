@@ -1,13 +1,13 @@
 import { Form } from '@layout';
 import { useSignUpFunnel } from '../../-hooks/useSignUpFunnel';
 import { SignUpLoginIdStep, SignUpPasswordStep, SignUpProfileStep } from '../steps';
-import * as styles from './SignUpFunnel.css';
+import * as S from './SignUpFunnel.css';
 
 export const SignUpFunnel = () => {
   const { field, funnel, submission } = useSignUpFunnel();
 
   return (
-    <Form className={styles.form} onSubmit={submission.submit}>
+    <Form className={S.form} onSubmit={submission.submit}>
       <Form.Header title='SOPT MEMBERS' description='회원가입' />
       {funnel.currentStep === 'loginId' ? (
         <SignUpLoginIdStep

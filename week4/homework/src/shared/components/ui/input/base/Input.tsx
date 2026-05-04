@@ -2,7 +2,7 @@ import { forwardRef, useId } from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
 import { Field } from '@ui/field';
 import { cn } from '@shared/utils/cn';
-import * as styles from './Input.css';
+import * as S from './Input.css';
 
 type InputProps = ComponentPropsWithoutRef<'input'> & {
   label?: string;
@@ -34,14 +34,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const describedBy = cn(ariaDescribedBy, hasMessage && messageId) || undefined;
 
     return (
-      <Field className={cn(styles.root, fullWidth && styles.fullWidth)}>
+      <Field className={cn(S.root, fullWidth && S.fullWidth)}>
         {label ? <Field.Label htmlFor={inputId}>{label}</Field.Label> : null}
         <Field.Control>
           <input
             ref={ref}
             id={inputId}
             type={type}
-            className={cn(styles.input, hasError && styles.error, className)}
+            className={cn(S.input, hasError && S.error, className)}
             aria-invalid={hasError || undefined}
             aria-describedby={describedBy}
             {...props}

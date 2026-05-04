@@ -2,7 +2,7 @@
 import { cloneElement, isValidElement } from 'react';
 import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
 import { cn } from '@shared/utils/cn';
-import * as styles from './Header.css';
+import * as S from './Header.css';
 
 type HeaderProps = ComponentPropsWithoutRef<'header'>;
 type HeaderLinkProps = ComponentPropsWithoutRef<'a'> & {
@@ -20,28 +20,28 @@ type HeaderNavProps = ComponentPropsWithoutRef<'nav'>;
 
 function HeaderRoot({ children, className, ...props }: HeaderProps) {
   return (
-    <header className={cn(styles.root, className)} {...props}>
-      <div className={styles.inner}>{children}</div>
+    <header className={cn(S.root, className)} {...props}>
+      <div className={S.inner}>{children}</div>
     </header>
   );
 }
 
 function HeaderBrand({ title, description, className, ...props }: HeaderBrandProps) {
   return (
-    <div className={cn(styles.brand, className)} {...props}>
-      <strong className={styles.title}>{title}</strong>
-      {description ? <p className={styles.description}>{description}</p> : null}
+    <div className={cn(S.brand, className)} {...props}>
+      <strong className={S.title}>{title}</strong>
+      {description ? <p className={S.description}>{description}</p> : null}
     </div>
   );
 }
 
 function HeaderNav({ className, ...props }: HeaderNavProps) {
-  return <nav className={cn(styles.nav, className)} {...props} />;
+  return <nav className={cn(S.nav, className)} {...props} />;
 }
 
 function HeaderLink({ className, ...props }: HeaderLinkProps) {
   const { asChild, children, ...linkProps } = props;
-  const linkClassName = cn(styles.navItem, className);
+  const linkClassName = cn(S.navItem, className);
 
   if (asChild && isValidElement(children)) {
     const child = children as ReactElement<{ className?: string }>;
@@ -59,7 +59,7 @@ function HeaderLink({ className, ...props }: HeaderLinkProps) {
 }
 
 function HeaderButton({ className, ...props }: HeaderButtonProps) {
-  return <button className={cn(styles.navButton, className)} {...props} />;
+  return <button className={cn(S.navButton, className)} {...props} />;
 }
 
 export const Header = Object.assign(HeaderRoot, {

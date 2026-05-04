@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { Form } from '@layout';
 import { Button, Input } from '@ui';
-import * as styles from '../funnel/SignUpFunnel.css';
+import * as S from '../funnel/SignUpFunnel.css';
 import type { SignUpStepProps } from './SignUpStep.types';
 
 type SignUpLoginIdStepProps = SignUpStepProps & {
@@ -28,11 +28,11 @@ export const SignUpLoginIdStep = ({
           {...register('loginId')}
         />
       </Form.Body>
-      <Form.Actions className={styles.actions}>
+      <Form.Actions className={S.actions}>
         <Button type='button' fullWidth disabled={!canGoNext || disabled} onClick={onNext}>
           다음
         </Button>
-        <Link className={styles.loginLink} to='/signin'>
+        <Link className={S.loginLink} to='/signin'>
           로그인
         </Link>
       </Form.Actions>
