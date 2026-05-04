@@ -1,0 +1,8 @@
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
+import type { SignUpFormValues } from '../../-schemas/signUpSchema';
+
+export type SignUpStepProps = {
+  register: UseFormRegister<SignUpFormValues>;
+  errors: FieldErrors<SignUpFormValues>;
+  disabled?: boolean;
+};
