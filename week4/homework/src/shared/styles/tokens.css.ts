@@ -1,0 +1,73 @@
+const rem = (px: number) => `${px / 16}rem`;
+
+export const primitiveTokens = {
+  color: {
+    white: '#ffffff',
+    sky50: '#eefbff',
+    sky100: '#dff6ff',
+    sky200: '#c6effc',
+    sky300: '#a9e8fb',
+    sky400: '#6fd7f7',
+    sky500: '#4dc7ef',
+    navy700: '#234b72',
+    navy800: '#173f67',
+    navy900: '#14375b',
+    blue950: '#143556',
+    green500: '#57c829',
+    red300: '#f5bcc1',
+    red500: '#ff7f7f',
+    border: '#c9eaf3',
+  },
+  space: {
+    4: rem(4),
+    8: rem(8),
+    12: rem(12),
+    16: rem(16),
+    20: rem(20),
+    24: rem(24),
+    32: rem(32),
+    40: rem(40),
+    48: rem(48),
+    64: rem(64),
+  },
+  radius: {
+    sm: rem(12),
+    md: rem(18),
+    lg: rem(24),
+    xl: rem(32),
+    pill: rem(999),
+    round: '50%',
+  },
+  fontSize: {
+    14: rem(14),
+    16: rem(16),
+    20: rem(20),
+    24: rem(24),
+    32: rem(32),
+    56: rem(56),
+  },
+  lineHeight: {
+    tight: '1.15',
+    normal: '1.4',
+    relaxed: '1.6',
+  },
+  fontWeight: {
+    medium: '500',
+    semibold: '600',
+    bold: '700',
+  },
+  shadow: {
+    card: `0 ${rem(10)} ${rem(24)} rgba(120, 191, 216, 0.16)`,
+    modal: `0 ${rem(24)} ${rem(48)} rgba(20, 55, 91, 0.18)`,
+  },
+  size: {
+    pageWidth: rem(1280),
+    buttonHeight: rem(48),
+    headerHeight: rem(96),
+    boardMaxWidth: rem(720),
+  },
+  motion: {
+    fast: '120ms',
+    normal: '180ms',
+  },
+} as const;

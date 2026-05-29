@@ -1,0 +1,1 @@
+export { GlobalBoundary } from './GlobalBoundary';
